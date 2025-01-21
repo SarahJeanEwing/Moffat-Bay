@@ -25,22 +25,12 @@ GRANT ALL PRIVILEGES ON moffat-bay.* TO 'dbadmin'@'localhost';
 
 -- drop tables if they are present
 DROP TABLE IF EXISTS customer;
-DROP TABLE IF EXISTS slip_size;
-DROP TABLE IF EXISTS status;
 DROP TABLE IF EXISTS boat_slip;
 DROP TABLE IF EXISTS reservation;
 DROP TABLE IF EXISTS waitlist;
 
 -- create the customer table
 CREATE TABLE customer (
-);
-
--- create the slip_size table
-CREATE TABLE slip_size (
-);
-
--- create the status table
-CREATE TABLE status (
 );
 
 -- create the boat_slip table
@@ -58,16 +48,6 @@ CREATE TABLE waitlist (
 
 -- insert customer records
 INSERT INTO customer()
-VALUES
-;
-
--- insert slip_size records
-INSERT INTO slip_size ()
-VALUES
-;
-
--- insert status records
-INSERT INTO status ()
 VALUES
 ;
 
