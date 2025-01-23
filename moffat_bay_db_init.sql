@@ -48,7 +48,17 @@ CREATE TABLE reservation (
 
 -- create the waitlist table
 CREATE TABLE waitlist (
+    waitlist_id     INT         NOT NULL    AUTO_INCREMENT,
+    customer_id     INT         NOT NULL,
+    date_of_request DATETIME    NOT NULL,
+    active          BOOLEAN     NOT NULL,
+    slip_size       INT         NOT NULL    CHECK (slip_size IN (26, 40, 50)),
+
+    PRIMARY KEY(waitlist_id),
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
 );
+
 
 
 -- insert customer records
@@ -97,8 +107,13 @@ VALUES
 ;
 
 -- insert waitlist records
-INSERT INTO waitlist ()
+INSERT INTO waitlist (customer_id, date_of_request, active, slip_size)
 VALUES
+    (10064, '2025-01-15 09:00:00', TRUE, 50), 
+    (10302, '2025-01-16 11:15:00', FALSE, 50), 
+    (10358, '2025-01-17 10:30:00', TRUE, 50), 
+    (10402, '2025-01-18 14:45:00', FALSE, 50), 
+    (10456, '2025-01-19 16:00:00', TRUE, 50)
 ;
 
 
