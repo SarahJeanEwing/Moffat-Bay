@@ -24,12 +24,12 @@ CREATE USER 'dbadmin'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mast
 GRANT ALL PRIVILEGES ON `moffat-bay`.* TO 'dbadmin'@'localhost';
 
 -- drop tables if they are present
-DROP TABLE IF EXISTS customer;
-DROP TABLE IF EXISTS boat_slip;
-DROP TABLE IF EXISTS reservation;
+DROP TABLE IF EXISTS customers;
+DROP TABLE IF EXISTS boat_slips;
+DROP TABLE IF EXISTS reservations;
 DROP TABLE IF EXISTS waitlist;
 
--- create the customer table
+-- create the customers table
 CREATE TABLE customers ( 
     customer_id     INT             NOT NULL    AUTO_INCREMENT,
     email           VARCHAR(50)     NOT NULL, 
@@ -40,20 +40,20 @@ CREATE TABLE customers (
     boat_length     INT, 
     password        VARCHAR(64)     NOT NULL,
 
-    PRIMARY KEY(customer_id)
+    PRIMARY KEY (customer_id)
 ); 
 
 
--- create the boat_slip table
+-- create the boat_slips table
 CREATE TABLE boat_slips (
     slip_id     INT         NOT NULL    AUTO_INCREMENT,
     in_use      BOOLEAN     NOT NULL,
     slip_size   INT         NOT NULL    CHECK (slip_size IN (26, 40, 50)),
 
-    PRIMARY KEY(slip_id)
+    PRIMARY KEY (slip_id)
 );
 
--- create the reservation table
+-- create the reservations table
 CREATE TABLE reservations (
 );
 
@@ -65,14 +65,14 @@ CREATE TABLE waitlist (
     active          BOOLEAN     NOT NULL,
     slip_size       INT         NOT NULL    CHECK (slip_size IN (26, 40, 50)),
 
-    PRIMARY KEY(waitlist_id),
+    PRIMARY KEY (waitlist_id),
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
 
 );
 
 
 
--- insert customer records
+-- insert customers records
 INSERT INTO customers (customer_id, email, first_name, last_name, telephone, boat_name, boat_length, password) 
 VALUES
 (10015, 'sponge@hmail.com', 'SpongeBob', 'SquarePants', '123-456-7890', 'Pineapple Express', 25, '7a8a87bc5130410299a3700ee9cb6e3f60b610525bb1128d4c2dff1798dcea34'),
@@ -117,7 +117,7 @@ VALUES
 (10425, 'buster@coldmail.com', 'Buster', 'Bluth', '345-456-6798', 'Bluth Boat', 42, '209d486bcd1b42e0ecb6cdc9e239e65f4f829f9327bc66c62ca4d76c72eb3e95')
 ;
 
--- insert boat_slip records
+-- insert boat_slips records
 INSERT INTO boat_slips (in_use, slip_size)
 VALUES
 (FALSE, 26),
@@ -152,7 +152,7 @@ VALUES
 (FALSE, 50)
 ;
 
--- insert reservation records
+-- insert reservations records
 INSERT INTO reservations ()
 VALUES
 ;
