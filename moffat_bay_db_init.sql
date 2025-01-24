@@ -40,8 +40,7 @@ CREATE TABLE customers (
     password        VARCHAR(64)     NOT NULL,
 
     PRIMARY KEY (customer_id)
-); 
-
+);
 
 -- create the boat_slips table
 CREATE TABLE boat_slips (
