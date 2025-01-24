@@ -1,6 +1,5 @@
 /*
     Title: moffat_bay_db_init.sql
-    Author: <Team Name>
     Date: 23 Jan 2025
     Description: moffat-bay database initialization script.
 */
@@ -41,8 +40,7 @@ CREATE TABLE customers (
     password        VARCHAR(64)     NOT NULL,
 
     PRIMARY KEY (customer_id)
-); 
-
+);
 
 -- create the boat_slips table
 CREATE TABLE boat_slips (
@@ -131,6 +129,11 @@ VALUES
 -- insert boat_slips records
 INSERT INTO boat_slips (in_use, slip_size)
 VALUES
+    (TRUE, 26),
+    (TRUE, 26),
+    (TRUE, 26),
+    (TRUE, 26),
+    (TRUE, 26),
     (FALSE, 26),
     (FALSE, 26),
     (FALSE, 26),
@@ -141,16 +144,11 @@ VALUES
     (FALSE, 26),
     (FALSE, 26),
     (FALSE, 26),
-    (FALSE, 26),
-    (FALSE, 26),
-    (FALSE, 26),
-    (FALSE, 26),
-    (FALSE, 26),
-    (FALSE, 40),
-    (FALSE, 40),
-    (FALSE, 40),
-    (FALSE, 40),
-    (FALSE, 40),
+    (TRUE, 40),
+    (TRUE, 40),
+    (TRUE, 40),
+    (TRUE, 40),
+    (TRUE, 40),
     (FALSE, 40),
     (FALSE, 40),
     (FALSE, 40),
@@ -170,7 +168,17 @@ VALUES
     (10413, 29, '2025-01-14', TRUE, FALSE),
     (10399, 28, '2025-01-01', TRUE, TRUE),
     (10385, 30, '2025-01-09', TRUE, FALSE),
-    (10375, 26, '2025-01-06', TRUE, TRUE)
+    (10375, 26, '2025-01-06', TRUE, TRUE),
+    (10366, 2, '2025-01-03', TRUE, TRUE),
+    (10354, 4, '2025-01-16', TRUE, FALSE),
+    (10349, 5, '2025-01-08', TRUE, TRUE),
+    (10338, 3, '2025-01-09', TRUE, FALSE),
+    (10325, 1, '2025-01-10', TRUE, TRUE),
+    (10517, 17, '2025-01-04', TRUE, TRUE),
+    (10468, 19, '2025-01-15', TRUE, FALSE),
+    (10015, 18, '2025-01-07', TRUE, TRUE),
+    (10429, 20, '2025-01-11', TRUE, FALSE),
+    (10106, 16, '2025-01-05', TRUE, TRUE)
 ;
 
 -- insert waitlist records
