@@ -55,7 +55,7 @@ CREATE TABLE boat_slips (
 CREATE TABLE reservations (
     reservation_id  INT         NOT NULL    AUTO_INCREMENT,
     customer_id     INT         NOT NULL,
-    slip_id         INT         NOT NULL,
+    slip_id         INT,
     checkin_date    DATE        NOT NULL,
     active          BOOLEAN     NOT NULL,
     power           BOOLEAN     NOT NULL,
