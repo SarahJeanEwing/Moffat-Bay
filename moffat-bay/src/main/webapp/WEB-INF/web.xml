@@ -8,6 +8,19 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+  <context-param>
+	<param-name>dbName</param-name>
+	<param-value>jdbc:mysql://localhost:3306/</param-value>
+  </context-param>
+  <context-param>
+    <param-name>dbUser</param-name>
+    <param-value>dbadmin</param-value>
+  </context-param>
+  <context-param>
+    <param-name>dbPass</param-name>
+    <param-value>master01</param-value>
+  </context-param>
 
   <!-- Default servlet for serving static content -->
   <servlet>
