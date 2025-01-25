@@ -53,7 +53,7 @@ header {
 
 .horizontal-menu {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -61,7 +61,7 @@ header {
 }
 
 .header-logo {
-    height: 110px;
+    height: 150px;
     margin-right: 20px;
 }
 
@@ -116,7 +116,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .landing-page-content {
     max-width: 700px;
-    margin: 100px auto 0 auto;
+    margin: 75px auto 0 auto;
     text-align: center;
     padding: 20px;
     border-radius: 10px;
