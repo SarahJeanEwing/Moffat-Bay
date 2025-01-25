@@ -9,17 +9,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Application Title</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap">
     <link rel="stylesheet" href="<c:url value='/css/styles.css' />">
 </head>
 <body>
     <header>
 	    <nav class="horizontal-menu">
-	    	<img src="<c:url value='/images/moffat-bay-logo.png' />" alt="Logo" class="header-logo">
+		    <a href="<c:url value='/home' />">
+		    	<img src="<c:url value='/images/moffat-bay-logo.png' />" alt="Moffat Bay Island Marina Logo" class="header-logo">
+		    </a>
 	        <ul>
 	            <li><a href="<c:url value='/home' />">Home</a></li>
 	            <li><a href="<c:url value='/about' />">About Us</a></li>
-	            <li><a href="<c:url value='/reservation' />">Slip Reservation</a></li>
-	            <li><a href="<c:url value='/my_reservation' />">My Reservation</a></li>
+	            <li><a href="<c:url value='/reservations' />">Slip Reservation</a></li>
+	            <li><a href="<c:url value='/reservation_lookup' />">My Reservation</a></li>
 	            <li><a href="<c:url value='/waitlist' />">Waitlist</a></li>
 	            <li><a href="<c:url value='/contact' />">Contact Us</a></li>
 	            <li>
@@ -32,7 +35,7 @@
 	                    </c:otherwise>
 	                </c:choose>
 	            </li>
-	            <li><a href="<c:url value='/book_now' />" class="book-now-button">Book Now</a></li>
+	            <li><a href="<c:url value='/reservations' />" class="book-now-button">Book Now</a></li>
 	        </ul>
 	    </nav>
     </header>
