@@ -42,42 +42,52 @@
   <!-- Custom Servlets -->
   <servlet>
     <servlet-name>AboutUsServlet</servlet-name>
-    <servlet-class>com.moffatbay.AboutUsServlet</servlet-class>
+    <servlet-class>com.moffatbay.servlets.AboutUsServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>AccountServlet</servlet-name>
+    <servlet-class>com.moffatbay.servlets.AccountServlet</servlet-class>
   </servlet>
 
   <servlet>
     <servlet-name>ContactUsServlet</servlet-name>
-    <servlet-class>com.moffatbay.ContactUsServlet</servlet-class>
+    <servlet-class>com.moffatbay.servlets.ContactUsServlet</servlet-class>
   </servlet>
-
+  
   <servlet>
-    <servlet-name>RegistrationServlet</servlet-name>
-    <servlet-class>com.moffatbay.RegistrationServlet</servlet-class>
+    <servlet-name>HomeServlet</servlet-name>
+    <servlet-class>com.moffatbay.servlets.HomeServlet</servlet-class>
   </servlet>
-
+  
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>com.moffatbay.LoginServlet</servlet-class>
+    <servlet-class>com.moffatbay.servlets.LoginServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>RegistrationServlet</servlet-name>
+    <servlet-class>com.moffatbay.servlets.RegistrationServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>ReservationLookupServlet</servlet-name>
+    <servlet-class>com.moffatbay.servlets.ReservationLookupServlet</servlet-class>
   </servlet>
 
   <servlet>
     <servlet-name>ReservationServlet</servlet-name>
-    <servlet-class>com.moffatbay.ReservationServlet</servlet-class>
+    <servlet-class>com.moffatbay.servlets.ReservationServlet</servlet-class>
   </servlet>
 
   <servlet>
     <servlet-name>ReservationSummaryServlet</servlet-name>
-    <servlet-class>com.moffatbay.ReservationSummaryServlet</servlet-class>
+    <servlet-class>com.moffatbay.servlets.ReservationSummaryServlet</servlet-class>
   </servlet>
-
-  <servlet>
-    <servlet-name>ReservationLookupServlet</servlet-name>
-    <servlet-class>com.moffatbay.ReservationLookupServlet</servlet-class>
-  </servlet>
-
+  
   <servlet>
     <servlet-name>WaitlistLookupServlet</servlet-name>
-    <servlet-class>com.moffatbay.WaitlistLookupServlet</servlet-class>
+    <servlet-class>com.moffatbay.servlets.WaitlistLookupServlet</servlet-class>
   </servlet>
-
+  
 </web-app>

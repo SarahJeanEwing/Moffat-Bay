@@ -1,4 +1,4 @@
-package com.moffatbay;
+package com.moffatbay.servlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

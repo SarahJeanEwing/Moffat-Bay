@@ -1,4 +1,4 @@
-package com.moffatbay;
+package com.moffatbay.servlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/reservation-summary")
-public class ReservationSummaryServlet extends HttpServlet {
+@WebServlet("/reservations")
+public class ReservationServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/reservation-summary.jsp").forward(request, response);
+        request.getRequestDispatcher("/reservations.jsp").forward(request, response);
     }
 }
