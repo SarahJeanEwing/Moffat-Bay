@@ -169,7 +169,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .landing-page-content {
-    max-width: 700px;
+    max-width: 800px;
     margin: 75px auto 0 auto;
     text-align: center;
     padding: 20px;
@@ -177,7 +177,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .landing-page-content p {
-    font-size: 20px;
+    font-size: 25px;
     padding-bottom: 20px;
 }
 
