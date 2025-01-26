@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap">
     <link rel="stylesheet" href="<c:url value='/css/styles.css' />">
 </head>
-<body class="index-page">
+<body class="about-us-page">
     <jsp:include page="/WEB-INF/jsp/header.jsp" />
     <div class="coming-soon-content">
         <h1>About Us</h1>
