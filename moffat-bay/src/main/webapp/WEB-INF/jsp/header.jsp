@@ -24,6 +24,7 @@
 	            <li><a href="<c:url value='/reservations' />">Slip Reservation</a></li>
 	            <li><a href="<c:url value='/reservation_lookup' />">My Reservation</a></li>
 	            <li><a href="<c:url value='/waitlist' />">Waitlist</a></li>
+	            <li><a href="<c:url value='/contact' />">Contact Us</a></li>
 	            <li>
 	                <c:choose>
 	                    <c:when test="${not empty sessionScope.user}">
