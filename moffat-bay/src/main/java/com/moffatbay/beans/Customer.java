@@ -13,7 +13,9 @@ public class Customer {
     // Constructors
     public Customer() {}
 
-    public Customer(int customerId, String email, String firstName, String lastName, String telephone, String boatName, int boatLength, String password) {
+    public Customer(int customerId, String email, String firstName,
+                    String lastName, String telephone, String boatName,
+                    int boatLength, String password) {
         this.customerId = customerId;
         this.email = email;
         this.firstName = firstName;
@@ -24,7 +26,8 @@ public class Customer {
         this.password = password;
     }
 
-    // Getters and Setters
+    // Getter and Setters
+
     public int getCustomerId() {
         return customerId;
     }

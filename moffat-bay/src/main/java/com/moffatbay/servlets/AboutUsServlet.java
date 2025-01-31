@@ -1,18 +1,20 @@
 package com.moffatbay.servlets;
 
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+
+import java.io.Serial;
 
 @WebServlet("/about")
 public class AboutUsServlet extends HttpServlet {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(jakarta.servlet.http.HttpServletRequest request,
+                         jakarta.servlet.http.HttpServletResponse response)
+    throws jakarta.servlet.ServletException, java.io.IOException {
         request.getRequestDispatcher("/about.jsp").forward(request, response);
     }
 }

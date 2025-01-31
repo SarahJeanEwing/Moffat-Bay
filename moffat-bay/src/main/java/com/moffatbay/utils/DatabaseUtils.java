@@ -24,22 +24,22 @@ public class DatabaseUtils {
             throws SQLException, ClassNotFoundException {
 
         try (Connection conn = getConnection(url, user, password);
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(query)) {
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
 
-                List<Map<String, Object>> results = new ArrayList<>();
-                ResultSetMetaData rsmd = rs.getMetaData();
-                int columnCount = rsmd.getColumnCount();
+            List<Map<String, Object>> results = new ArrayList<>();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int columnCount = rsmd.getColumnCount();
 
-                // Process each row in the result set
-                while (rs.next()) {
-                    Map<String, Object> row = new HashMap<>();
-                    for (int i = 1; i <= columnCount; i++) {
-                        row.put(rsmd.getColumnName(i), rs.getObject(i));
-                    }
-                    results.add(row);
+            // Process each row in the result set
+            while (rs.next()) {
+                Map<String, Object> row = new HashMap<>();
+                for (int i = 1; i <= columnCount; i++) {
+                    row.put(rsmd.getColumnName(i), rs.getObject(i));
+                }
+                results.add(row);
             }
-                return results;
+            return results;
         }
     }
 

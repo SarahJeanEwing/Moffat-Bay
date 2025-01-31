@@ -1,4 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +8,10 @@
     <link rel="stylesheet" href="<c:url value='/css/styles.css' />">
 </head>
 <body class="index-page">
-    <jsp:include page="/WEB-INF/jsp/header.jsp" />
-    <div class="coming-soon-content">
-        <h1>Reservation Lookup</h1>
-        <p>Coming Soon...</p>
-    </div>
+<jsp:include page="header.jsp"/>
+<div class="coming-soon-content">
+    <h1>Reservation Lookup</h1>
+    <p>Coming Soon...</p>
+</div>
 </body>
 </html>
