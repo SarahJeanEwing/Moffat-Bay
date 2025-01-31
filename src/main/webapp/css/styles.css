@@ -1,0 +1,200 @@
+.coming-soon-content {
+    max-width: 600px;
+    margin: 100px auto 0 auto;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 24px; /* Optional: adjust font size */
+}
+
+
+body.index-page {
+    position: relative;
+    overflow: hidden;
+}
+
+body.index-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('../images/landing-page-background-image.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0.30;
+    z-index: -1;
+}
+
+body.login-page {
+    position: relative;
+    overflow: hidden;
+}
+
+body.login-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('../images/login-page-background-image.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0.30;
+    z-index: -1;
+}
+
+body.about-us-page {
+    position: relative;
+    overflow: hidden;
+}
+
+body.about-us-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('../images/about-us-background-image.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0.30;
+    z-index: -1;
+}
+
+body.registration-page {
+    position: relative;
+    overflow: hidden;
+}
+
+body.registration-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('../images/registration-page-background-image.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0.30;
+    z-index: -1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    width: 100%;
+    padding: 10px;
+    color: white;
+    text-emphasis-color: aliceblue;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.horizontal-menu {
+    display: flex;
+    align-items: flex-start;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.header-logo {
+    height: 180px;
+    margin-right: 20px;
+}
+
+.horizontal-menu ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+.horizontal-menu li {
+    margin-right: 20px;
+}
+
+.horizontal-menu li a {
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.horizontal-menu li a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.book-now-button {
+    background-color: #47525E;
+    color: white !important;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-left: auto;
+}
+
+.book-now-button:hover {
+    background-color: #218838;
+    color: white !important;
+}
+
+body {
+    padding: 20px;
+    font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lato', sans-serif;
+}
+
+li {
+    color: #218838;
+}
+.landing-page-content {
+    max-width: 800px;
+    margin: 75px auto 0 auto;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.landing-page-content p {
+    font-size: 25px;
+    padding-bottom: 20px;
+}
+
+
