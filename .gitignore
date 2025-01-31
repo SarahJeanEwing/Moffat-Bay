@@ -39,3 +39,6 @@ build/
 
 ### Smart Tomcat ###
 .smarttomcat
+
+### Local Config Properties ###
+local-config.properties
