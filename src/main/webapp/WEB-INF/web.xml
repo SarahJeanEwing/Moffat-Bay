@@ -23,6 +23,7 @@
     </context-param>
 
     <!-- Default servlet for serving static content -->
+    <!--
     <servlet>
         <servlet-name>default</servlet-name>
         <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
@@ -38,8 +39,10 @@
         <servlet-name>default</servlet-name>
         <url-pattern>/css/*</url-pattern>
     </servlet-mapping>
+    -->
 
     <!-- Custom Servlets -->
+    <!--
     <servlet>
         <servlet-name>AboutUsServlet</servlet-name>
         <servlet-class>com.moffatbay.servlets.AboutUsServlet</servlet-class>
@@ -89,5 +92,6 @@
         <servlet-name>WaitlistLookupServlet</servlet-name>
         <servlet-class>com.moffatbay.servlets.WaitlistLookupServlet</servlet-class>
     </servlet>
+    -->
 
 </web-app>
