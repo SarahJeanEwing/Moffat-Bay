@@ -36,7 +36,6 @@
                     </c:otherwise>
                 </c:choose>
             </li>
-            <li><a href="<c:url value='/reservations' />" class="book-now-button">Book Now</a></li>
         </ul>
     </nav>
 </header>

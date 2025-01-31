@@ -3,7 +3,9 @@
 <%@ page import="com.moffatbay.utils.ConfigLoader" %>
 <%
     String baseURL = ConfigLoader.getProperty("base.url");
-    if (!baseURL.isEmpty()) {
+    if (baseURL == null ) {
+        baseURL = "/";
+    } else {
         baseURL += "/";
     }
 %>

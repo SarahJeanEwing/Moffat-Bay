@@ -3,12 +3,14 @@
 <%@ page import="com.moffatbay.utils.ConfigLoader" %>
 <%
     String baseURL = ConfigLoader.getProperty("base.url");
-    if (!baseURL.isEmpty()) {
+    if (baseURL == null ) {
+        baseURL = "/";
+    } else {
         baseURL += "/";
     }
 %>
 <style>
-    body.index-page::before {
+    body.about-us-page::before {
         background: url('<%= baseURL %>images/about-us-background-image.jpg') no-repeat center center fixed;
     }
 </style>

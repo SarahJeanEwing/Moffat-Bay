@@ -3,7 +3,9 @@
 <%@ page import="com.moffatbay.utils.ConfigLoader" %>
 <%
   String baseURL = ConfigLoader.getProperty("base.url");
-  if (!baseURL.isEmpty()) {
+  if (baseURL == null ) {
+    baseURL = "/";
+  } else {
     baseURL += "/";
   }
 %>
@@ -24,7 +26,8 @@
 <jsp:include page="header.jsp"/>
 
 <div class="landing-page-content">
-  <p>Welcome to Moffat Bay Island Marina, your premier destination for a memorable boating experience. Our state-of-the-art facilities offer spacious slips for boats of all sizes, modern amenities, and a vibrant community of boating enthusiasts. Whether you're looking to reserve a slip or explore our marina, we've got everything you need to set sail on your next adventure. Join us at Moffat Bay Island Marina and embark on a journey like no other.</p>
+  <h1>Welcome to Moffat Bay Island Marina</h1>
+  <p>We are your premier destination for a memorable boating experience. Our state-of-the-art facilities offer spacious slips for boats of all sizes, modern amenities, and a vibrant community of boating enthusiasts. Whether you're looking to reserve a slip or explore our marina, we've got everything you need to set sail on your next adventure. Join us at Moffat Bay Island Marina and embark on a journey like no other.</p>
   <a href="<c:url value='/reservations' />" class="book-now-button">Book Now</a>
 
 </div>

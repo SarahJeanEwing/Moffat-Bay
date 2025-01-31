@@ -125,7 +125,7 @@ header {
 }
 
 .horizontal-menu li {
-    margin-right: 15px;
+    margin-right: 42px;
 }
 
 .horizontal-menu li a {
@@ -134,6 +134,8 @@ header {
     padding: 14px 16px;
     text-decoration: none;
 }
+
+.horizontal-menu li:last-child { margin-right: 0; }
 
 .horizontal-menu li a:hover {
     background-color: #ddd;
@@ -166,7 +168,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .landing-page-content {
     max-width: 800px;
-    margin: 75px auto 0 auto;
+    margin: 40px auto 0 auto;
     text-align: center;
     padding: 20px;
     border-radius: 10px;
