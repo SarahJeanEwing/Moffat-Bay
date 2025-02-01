@@ -19,29 +19,36 @@ public class DatabaseUtils {
         return DriverManager.getConnection(url, user, password);
     }
 
-    // Execute a SELECT query and return the results in a list of maps
-    public static List<Map<String, Object>> executeQuery(String query, String url, String user, String password)
+    // Execute a SELECT query with parameters and return the results in a list of maps
+    public static List<Map<String, Object>> executeQueryWithParams(String query, List<Object> parameters, String url, String user, String password)
             throws SQLException, ClassNotFoundException {
 
         try (Connection conn = getConnection(url, user, password);
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
 
-            List<Map<String, Object>> results = new ArrayList<>();
-            ResultSetMetaData rsmd = rs.getMetaData();
-            int columnCount = rsmd.getColumnCount();
-
-            // Process each row in the result set
-            while (rs.next()) {
-                Map<String, Object> row = new HashMap<>();
-                for (int i = 1; i <= columnCount; i++) {
-                    row.put(rsmd.getColumnName(i), rs.getObject(i));
-                }
-                results.add(row);
+            // Set parameters for the prepared statement
+            for (int i = 0; i < parameters.size(); i++) {
+                pstmt.setObject(i + 1, parameters.get(i));
             }
-            return results;
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                List<Map<String, Object>> results = new ArrayList<>();
+                ResultSetMetaData rsmd = rs.getMetaData();
+                int columnCount = rsmd.getColumnCount();
+
+                // Process each row in the result set
+                while (rs.next()) {
+                    Map<String, Object> row = new HashMap<>();
+                    for (int i = 1; i <= columnCount; i++) {
+                        row.put(rsmd.getColumnName(i), rs.getObject(i));
+                    }
+                    results.add(row);
+                }
+                return results;
+            }
         }
     }
+
 
     // Insert a new record into the database (e.g., INSERT statement)
     public static int executeUpdate(String query, List<Object> parameters, String url, String user, String password)
