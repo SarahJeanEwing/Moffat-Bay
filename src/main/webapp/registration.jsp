@@ -10,9 +10,21 @@
 </head>
 <body class="registration-page">
 <jsp:include page="header.jsp"/>
-<div class="coming-soon-content">
-    <h1>Registration</h1>
-    <p>Coming Soon...</p>
+<div class="registration-form">
+    <h1>Register</h1>
+    <form action="registration" method="post">
+        <input type="email" name="email" placeholder="Email" required/>
+        <input type="text" name="firstName" placeholder="First Name" required/>
+        <input type="text" name="lastName" placeholder="Last Name" required/>
+        <input type="text" name="telephone" placeholder="Telephone" required/>
+        <input type="text" name="boatName" placeholder="Boat Name" required/>
+        <input type="number" name="boatLength" placeholder="Boat Length" required/>
+        <input type="password" name="password" placeholder="Password" required/>
+        <button type="submit">Register</button>
+    </form>
+    <c:if test="${not empty errorMessage}">
+        <p class="error">${errorMessage}</p>
+    </c:if>
 </div>
 </body>
 </html>

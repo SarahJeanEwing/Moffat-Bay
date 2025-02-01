@@ -1,7 +1,9 @@
 package com.moffatbay.servlets;
 
+import com.moffatbay.utils.DatabaseUtils;
 import com.moffatbay.utils.PasswordHash;
 import com.moffatbay.beans.Customer;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,6 +14,9 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.Serial;
 import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
 
 @WebServlet("/registration")
 public class RegistrationServlet extends HttpServlet {
@@ -61,6 +66,28 @@ public class RegistrationServlet extends HttpServlet {
     }
 
     private void saveCustomer(Customer customer) {
-        // Add code to save customer to database
+        ServletContext context = getServletContext();
+        String url = context.getInitParameter("dbName");
+        String user = context.getInitParameter("dbUser");
+        String password = context.getInitParameter("dbPass");
+
+        String query = "INSERT INTO customers " +
+                "(email, first_name, last_name, telephone, boat_name, boat_length, password)" +
+                " VALUES (?, ?, ?, ?, ?, ?, ? );";
+
+        List<Object> params = Arrays.asList(
+                customer.getEmail(),
+                customer.getFirstName(),
+                customer.getLastName(),
+                customer.getTelephone(),
+                customer.getBoatName(),
+                customer.getBoatLength(),
+                customer.getPassword()
+        );
+        try {
+            DatabaseUtils.executeUpdate(query, params, url, user, password);
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
