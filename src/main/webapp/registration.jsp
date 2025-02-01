@@ -1,19 +1,5 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="com.moffatbay.utils.ConfigLoader" %>
-<%
-    String baseURL = ConfigLoader.getProperty("base.url");
-    if (baseURL == null ) {
-        baseURL = "/";
-    } else {
-        baseURL += "/";
-    }
-%>
-<style>
-    body.registration-page::before {
-        background: url('<%= baseURL %>images/registration-page-background-image.jpg') no-repeat center center fixed;
-    }
-</style>
 
 <!DOCTYPE html>
 <html>

@@ -142,7 +142,7 @@ header {
 }
 
 .horizontal-menu li {
-    margin-right: 20px;
+    margin-right:31px;
 }
 
 .horizontal-menu li a {
@@ -186,7 +186,7 @@ li {
 }
 .landing-page-content {
     max-width: 800px;
-    margin: 75px auto 0 auto;
+    margin: 50px auto 0 auto;
     text-align: center;
     padding: 20px;
     border-radius: 10px;
