@@ -21,14 +21,17 @@ public class AccountServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Customer user = (Customer) session.getAttribute("user");
 
-        if (user != null) {
-            request.setAttribute("firstName", user.getFirstName());
-            request.setAttribute("lastName", user.getLastName());
-            request.setAttribute("email", user.getEmail());
-            request.setAttribute("telephone", user.getTelephone());
-            request.setAttribute("boatName", user.getBoatName());
-            request.setAttribute("boatLength", user.getBoatLength());
+        if (user == null) {
+            response.sendRedirect("login.jsp");
+            return;
         }
+
+        request.setAttribute("firstName", user.getFirstName());
+        request.setAttribute("lastName", user.getLastName());
+        request.setAttribute("email", user.getEmail());
+        request.setAttribute("telephone", user.getTelephone());
+        request.setAttribute("boatName", user.getBoatName());
+        request.setAttribute("boatLength", user.getBoatLength());
 
         request.getRequestDispatcher("/account.jsp").forward(request, response);
     }
