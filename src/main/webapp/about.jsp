@@ -19,7 +19,7 @@
 <head>
     <title>About Us</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap">
-    <link rel="stylesheet" href="<c:url value='/css/styles.css' />">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body class="about-us-page">
 <jsp:include page="header.jsp"/>
