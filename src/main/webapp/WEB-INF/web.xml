@@ -1,0 +1,97 @@
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+    <display-name>moffat-bay</display-name>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>default.html</welcome-file>
+        <welcome-file>default.jsp</welcome-file>
+        <welcome-file>default.htm</welcome-file>
+    </welcome-file-list>
+
+    <context-param>
+        <param-name>dbName</param-name>
+        <param-value>jdbc:mysql://localhost:3306/moffat-bay</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbUser</param-name>
+        <param-value>dbadmin</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbPass</param-name>
+        <param-value>master01</param-value>
+    </context-param>
+
+    <!-- Default servlet for serving static content -->
+    <!--
+    <servlet>
+        <servlet-name>default</servlet-name>
+        <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/images/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/css/*</url-pattern>
+    </servlet-mapping>
+    -->
+
+    <!-- Custom Servlets -->
+    <!--
+    <servlet>
+        <servlet-name>AboutUsServlet</servlet-name>
+        <servlet-class>com.moffatbay.servlets.AboutUsServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>AccountServlet</servlet-name>
+        <servlet-class>com.moffatbay.servlets.AccountServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ContactUsServlet</servlet-name>
+        <servlet-class>com.moffatbay.servlets.ContactUsServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>com.moffatbay.servlets.HomeServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.moffatbay.servlets.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>RegistrationServlet</servlet-name>
+        <servlet-class>com.moffatbay.servlets.RegistrationServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ReservationLookupServlet</servlet-name>
+        <servlet-class>com.moffatbay.servlets.ReservationLookupServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ReservationServlet</servlet-name>
+        <servlet-class>com.moffatbay.servlets.ReservationServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ReservationSummaryServlet</servlet-name>
+        <servlet-class>com.moffatbay.servlets.ReservationSummaryServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>WaitlistLookupServlet</servlet-name>
+        <servlet-class>com.moffatbay.servlets.WaitlistLookupServlet</servlet-class>
+    </servlet>
+    -->
+
+</web-app>
