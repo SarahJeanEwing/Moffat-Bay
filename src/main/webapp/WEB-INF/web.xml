@@ -11,7 +11,7 @@
 
     <context-param>
         <param-name>dbName</param-name>
-        <param-value>jdbc:mysql://localhost:3306/</param-value>
+        <param-value>jdbc:mysql://localhost:3306/moffat-bay</param-value>
     </context-param>
     <context-param>
         <param-name>dbUser</param-name>
