@@ -1,25 +1,24 @@
 package com.moffatbay.servlets;
 
-import com.moffatbay.utils.PasswordHash;
-import com.moffatbay.utils.DatabaseUtils;
-import com.moffatbay.beans.Customer;
-import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import com.moffatbay.beans.Customer;
+import com.moffatbay.beans.Reservation;
+import com.moffatbay.utils.DatabaseUtils;
+import com.moffatbay.utils.PasswordHash;
 
 import java.io.IOException;
 import java.io.Serial;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet("/login") // Make sure this URL matches your form action
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -29,10 +28,9 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        ServletContext context = getServletContext();
-        dbURL = context.getInitParameter("dbName");
-        dbUser = context.getInitParameter("dbUser");
-        dbPassword = context.getInitParameter("dbPass");
+        dbURL = getServletContext().getInitParameter("dbName");
+        dbUser = getServletContext().getInitParameter("dbUser");
+        dbPassword = getServletContext().getInitParameter("dbPass");
     }
 
     @Override
@@ -45,48 +43,46 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        Customer loggedInUser = getCustomerByEmail(email);
-        String storedHashedPassword = (loggedInUser != null) ? loggedInUser.getPassword() : null;
+        Customer customer = getCustomerByEmail(email);
 
         try {
-            if (storedHashedPassword != null) {
+            if (customer != null && PasswordHash.checkPassword(password, customer.getPassword())) {
+                HttpSession session = request.getSession();
+                session.setAttribute("user", customer);
 
-                if (PasswordHash.checkPassword(password, storedHashedPassword)) {
-                    HttpSession session = request.getSession();
-                    session.setAttribute("user", loggedInUser);
-                    response.sendRedirect("account.jsp");
-                } else {
-                    request.setAttribute("errorMessage", "Invalid email or password");
-                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                // Retrieve reservation details for the logged-in customer
+                Reservation reservation = getReservationForCustomer(customer.getCustomerId());
+
+                if (reservation != null) {
+                    session.setAttribute("reservation", reservation);
                 }
+
+                response.sendRedirect("my_account");
             } else {
                 request.setAttribute("errorMessage", "Invalid email or password");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            request.setAttribute("errorMessage", "An error occurred during login");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            throw new RuntimeException(e);
         }
     }
 
     private Customer getCustomerByEmail(String email) {
-        String query = "SELECT customer_id, email, first_name, last_name, telephone, boat_name, boat_length, password FROM customers WHERE email = ?";
-        List<Object> parameters = Arrays.asList(email);
+        String query = "SELECT * FROM customers WHERE email = ?";
+        List<Object> parameters = List.of(email);
 
         try {
             List<Map<String, Object>> results = DatabaseUtils.executeQueryWithParams(query, parameters, dbURL, dbUser, dbPassword);
-
             if (!results.isEmpty()) {
                 Map<String, Object> row = results.get(0);
                 Customer customer = new Customer();
-                customer.setCustomerId(row.get("customer_id") != null ? ((Integer) row.get("customer_id")) : 0);
+                customer.setCustomerId((Integer) row.get("customer_id"));
                 customer.setEmail((String) row.get("email"));
                 customer.setFirstName((String) row.get("first_name"));
                 customer.setLastName((String) row.get("last_name"));
                 customer.setTelephone((String) row.get("telephone"));
                 customer.setBoatName((String) row.get("boat_name"));
-                customer.setBoatLength(row.get("boat_length") != null ? ((Integer) row.get("boat_length")) : 0);
+                customer.setBoatLength((Integer) row.get("boat_length"));
                 customer.setPassword((String) row.get("password"));
                 return customer;
             }
@@ -96,4 +92,26 @@ public class LoginServlet extends HttpServlet {
         return null;
     }
 
+    private Reservation getReservationForCustomer(int customerId) {
+        String query = "SELECT * FROM reservations WHERE customer_id = ? AND active = true";
+        List<Object> parameters = List.of(customerId);
+
+        try {
+            List<Map<String, Object>> results = DatabaseUtils.executeQueryWithParams(query, parameters, dbURL, dbUser, dbPassword);
+            if (!results.isEmpty()) {
+                Map<String, Object> row = results.get(0);
+                Reservation reservation = new Reservation();
+                reservation.setReservationId((String) row.get("reservation_id"));
+                reservation.setSlipId((Integer) row.get("slip_id"));
+                reservation.setCheckinDate((java.sql.Date) row.get("checkin_date"));
+                reservation.setCheckoutDate((java.sql.Date) row.get("checkout_date"));
+                reservation.setActive((Boolean) row.get("active"));
+                reservation.setPower((Boolean) row.get("power"));
+                return reservation;
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
