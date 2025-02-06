@@ -421,14 +421,20 @@ body.registration-page::before {
 
 /* Styles for the Reservation Info Page */
 
-body.reservation-info-page {
-    margin: 0;
-    padding-top: 200px; /* What is header height */
-    font-family: 'Lato', sans-serif;
-    background: url('images/background.jpg') no-repeat center center fixed; /* replace 'images/background.jpg' with your image path */
+body.reservation-info-page {before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/reservation-us-background-image.jpeg)
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
     background-size: cover;
-    position: relative;
-    overflow: hidden;
+    opacity: 0.30;
+    z-index: -1;
 }
 
 /* Green Box */
