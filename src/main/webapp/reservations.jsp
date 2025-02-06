@@ -10,7 +10,6 @@
 </head>
 <body class="index-page">
 <jsp:include page="header.jsp" />
-<div class="coming-soon-content">
     <h1>Slip Reservation</h1>
     <!-- Content Box -->
     <div class="content-box">
