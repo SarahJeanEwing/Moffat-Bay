@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
     private String dbPassword;
 
     @Override
-    public void init() throws ServletException {
+    public void init() {
         dbURL = getServletContext().getInitParameter("dbName");
         dbUser = getServletContext().getInitParameter("dbUser");
         dbPassword = getServletContext().getInitParameter("dbPass");
@@ -74,7 +74,7 @@ public class LoginServlet extends HttpServlet {
         try {
             List<Map<String, Object>> results = DatabaseUtils.executeQueryWithParams(query, parameters, dbURL, dbUser, dbPassword);
             if (!results.isEmpty()) {
-                Map<String, Object> row = results.get(0);
+                Map<String, Object> row = results.getFirst();
                 Customer customer = new Customer();
                 customer.setCustomerId((Integer) row.get("customer_id"));
                 customer.setEmail((String) row.get("email"));
@@ -99,7 +99,7 @@ public class LoginServlet extends HttpServlet {
         try {
             List<Map<String, Object>> results = DatabaseUtils.executeQueryWithParams(query, parameters, dbURL, dbUser, dbPassword);
             if (!results.isEmpty()) {
-                Map<String, Object> row = results.get(0);
+                Map<String, Object> row = results.getFirst();
                 Reservation reservation = new Reservation();
                 reservation.setReservationId((String) row.get("reservation_id"));
                 reservation.setSlipId((Integer) row.get("slip_id"));

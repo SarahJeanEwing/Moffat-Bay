@@ -338,3 +338,81 @@ body.registration-page::before {
 .error {
     color: red;
 }
+
+.account-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.account-container.single {
+    max-width: 500px; /* Adjust width for single section */
+}
+
+.details-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.details-section {
+    flex: 1 1 45%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-bottom: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+}
+
+.details-section.single {
+    max-width: 400px;
+    margin: 0 auto 20px;
+}
+
+.details-section h2 {
+    text-align: center;
+}
+
+.details-section p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.btn-container {
+    text-align: center;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.cancel-reservation-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.btn-cancel {
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    background-color: #c82333;
+}
