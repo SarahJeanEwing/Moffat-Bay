@@ -10,9 +10,25 @@
 </head>
 <body class="index-page">
 <jsp:include page="header.jsp" />
-<div class="coming-soon-content">
     <h1>Slip Reservation</h1>
-    <p>Coming Soon...</p>
+    <!-- Content Box -->
+    <div class="content-box">
+        <h2>Check Slip Availability!</h2>
+        <p>Our slips come in three sizes with optional power hook-up. Find the perfect fit for your vessel and enjoy seamless access to power whenever you need it.</p>
+        
+        <!-- Reserve Now Button -->
+        <a href="reservations.jsp" class="reserve-button">Reserve Now</a>
+        
+        <!-- Price Box -->
+        <div class="price-box">
+            <h2>Slip Sizes and Pricing</h2>
+            <ul>
+                <li>Small Slip (26ft) - $x00/month</li>
+                <li>Medium Slip (40ft) - $x00/month</li>
+                <li>Large Slip (50ft) - $x00/month</li>
+            </ul>
+            <p>Optional Power Hook-Up: Additional $x0/month</p>
+        
 </div>
 </body>
 </html>
