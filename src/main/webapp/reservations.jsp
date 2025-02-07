@@ -23,11 +23,13 @@
         <div class="price-box">
             <h2>Slip Sizes and Pricing</h2>
             <ul>
-                <li>Small Slip (26ft) - $x00/month</li>
-                <li>Medium Slip (40ft) - $x00/month</li>
-                <li>Large Slip (50ft) - $x00/month</li>
+                <li>Small Slip (26ft)</li>
+                <li>Medium Slip (40ft)</li>
+                <li>Large Slip (50ft)</li>
             </ul>
-            <p>Optional Power Hook-Up: Additional $x0/month</p>
+            <p>Optional Power Hook-Up: Additional $10/month</p>
+            <p><strong>Marina monthly cost:</strong><br>$10 per boat foot + $10 for electric power.
+                For example, a 34 ft boat would cost $350 a month.</p>
         
 </div>
 </body>
