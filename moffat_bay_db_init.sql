@@ -53,10 +53,11 @@ CREATE TABLE boat_slips (
 
 -- create the reservations table
 CREATE TABLE reservations (
-    reservation_id  INT         NOT NULL    AUTO_INCREMENT,
+    reservation_id  VARCHAR(8)  NOT NULL,
     customer_id     INT         NOT NULL,
     slip_id         INT,
     checkin_date    DATE        NOT NULL,
+    checkout_date   DATE,
     active          BOOLEAN     NOT NULL,
     power           BOOLEAN     NOT NULL,
 
@@ -162,23 +163,23 @@ VALUES
 ;
 
 -- insert reservations records
-INSERT INTO reservations (customer_id, slip_id, checkin_date, active, power)
+INSERT INTO reservations (reservation_id, customer_id, slip_id, checkin_date, active, power)
 VALUES
-    (10425, 27, '2025-01-02', TRUE, TRUE),
-    (10413, 29, '2025-01-14', TRUE, FALSE),
-    (10399, 28, '2025-01-01', TRUE, TRUE),
-    (10385, 30, '2025-01-09', TRUE, FALSE),
-    (10375, 26, '2025-01-06', TRUE, TRUE),
-    (10366, 2, '2025-01-03', TRUE, TRUE),
-    (10354, 4, '2025-01-16', TRUE, FALSE),
-    (10349, 5, '2025-01-08', TRUE, TRUE),
-    (10338, 3, '2025-01-09', TRUE, FALSE),
-    (10325, 1, '2025-01-10', TRUE, TRUE),
-    (10517, 17, '2025-01-04', TRUE, TRUE),
-    (10468, 19, '2025-01-15', TRUE, FALSE),
-    (10015, 18, '2025-01-07', TRUE, TRUE),
-    (10429, 20, '2025-01-11', TRUE, FALSE),
-    (10106, 16, '2025-01-05', TRUE, TRUE)
+    ('k9D2T4yQ', 10425, 27, '2025-01-02', TRUE, TRUE),
+    ('A7e3G5bH', 10413, 29, '2025-01-14', TRUE, FALSE),
+    ('p6V1Z8mX', 10399, 28, '2025-01-01', TRUE, TRUE),
+    ('F3c7K2jR', 10385, 30, '2025-01-09', TRUE, FALSE),
+    ('N5y4B9wL', 10375, 26, '2025-01-06', TRUE, TRUE),
+    ('Q1z8X6hM', 10366, 2, '2025-01-03', TRUE, TRUE),
+    ('T2g5J7lP', 10354, 4, '2025-01-16', TRUE, FALSE),
+    ('H8r3S1kF', 10349, 5, '2025-01-08', TRUE, TRUE),
+    ('W6v9A2pD', 10338, 3, '2025-01-09', TRUE, FALSE),
+    ('L4y7T8mQ', 10325, 1, '2025-01-10', TRUE, TRUE),
+    ('M5k1G6zN', 10517, 17, '2025-01-04', TRUE, TRUE),
+    ('X3h2Y9wV', 10468, 19, '2025-01-15', TRUE, FALSE),
+    ('B7d4K5nR', 10015, 18, '2025-01-07', TRUE, TRUE),
+    ('J2p8V6tQ', 10429, 20, '2025-01-11', TRUE, FALSE),
+    ('Z9w1F3mL', 10106, 16, '2025-01-05', TRUE, TRUE)
 ;
 
 -- insert waitlist records

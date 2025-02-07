@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>Log In</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
+    <link rel="stylesheet" href="<c:url value='/css/styles.css' />">
 </head>
 <body class="login-page">
 <!-- Include Header -->
