@@ -145,15 +145,20 @@ body.about-us-page::before {
 .container-wrapper {
     display: flex;
     justify-content: space-between;
-    gap: 20px;
+    gap: 5px;
     margin: 0 auto;
-    padding: 20px 20px 0;
+    padding: 10px 10px 0;
     width: 100%;
     max-width: 1200px;
 }
 
+.about-container, .contact-container, .c-info-container {
+    margin: 5px
+}
+
 .about-container {
     flex: 0 0 34%;
+    height: 320px;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -161,28 +166,41 @@ body.about-us-page::before {
 }
 
 .contact-container {
-    flex: 0 0 66%;
+    flex: 0 0 34%;
     display: flex;
-    gap: 20px;
+    gap: 10px;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+.c-info-container {
+    display: flex;
+    flex: 0 1 29%;
+    gap: 5px;
+    background: rgb(0, 176, 192, .2);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    height: 300px;
 }
 
 .contact-form {
-    flex: 0 0 60%;
+    flex: 1 1 100%;
     background: rgba(0, 0, 0, 0.8);
     color: white;
     border-radius: 10px;
-    padding: 20px;
+    padding: 10px;
 }
 
 .contact-info {
-    flex: 0 0 40%;
-    background: rgba(255, 255, 255, 0.9);
+    flex: 0 1 auto;
+    height: auto;
+    background: rgb(255, 255, 255, .6);
     border-radius: 10px;
-    padding: 20px;
+    padding: 5px;
 }
 
 .contact-form label, .contact-form input, .contact-form textarea, .contact-form button {
