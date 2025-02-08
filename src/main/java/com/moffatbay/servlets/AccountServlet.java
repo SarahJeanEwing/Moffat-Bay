@@ -34,13 +34,6 @@ public class AccountServlet extends HttpServlet {
         request.setAttribute("boatName", user.getBoatName());
         request.setAttribute("boatLength", user.getBoatLength());
 
-        // Retrieve reservation details from session if available
-        Reservation reservation = (Reservation) session.getAttribute("reservation");
-
-        if (reservation != null) {
-            request.setAttribute("reservation", reservation);
-        }
-
         request.getRequestDispatcher("/account.jsp").forward(request, response);
     }
 }
