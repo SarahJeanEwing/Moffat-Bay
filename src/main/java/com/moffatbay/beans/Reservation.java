@@ -24,7 +24,7 @@ public class Reservation {
         String reservationID;
         do {
             reservationID = generateRandomReservationID();
-        } while (reservationIDExists(reservationID)); // Corrected variable name
+        } while (reservationIDExists(reservationID));
         return reservationID;
     }
 
