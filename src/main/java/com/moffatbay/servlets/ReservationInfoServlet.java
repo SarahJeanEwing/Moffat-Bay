@@ -10,13 +10,18 @@ import java.io.IOException;
 import java.io.Serial;
 
 
-@WebServlet("/reservations-info")
-public class ReservationInfoServlet extends HttpServlet {
-    @Serial
+@WebServlet("/RedirectServlet")
+public class RedirectServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/reservations-info.jsp").forward(request, response);
+        HttpSession session = request.getSession(false);
+        boolean isLoggedIn = (session != null && session.getAttribute("user") != null);
+
+        if (isLoggedIn) {
+            response.sendRedirect("/* add correct jsp.jsp");*/
+        } else {
+            response.sendRedirect("login.jsp");
+        }
     }
 }
