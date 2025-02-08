@@ -17,7 +17,7 @@
     <h2>Reservation Confirmation</h2>
     <p>Slip Size: ${slipSize}</p>
     <p>Date Chosen: ${dateChosen}</p>
-    <form action="ReservationUserConfirmServlet" method="post">
+    <form action="${pageContext.request.contextPath}/reservation-confirmation" method="post">
         <input type="hidden" name="slipSize" value="${slipSize}">
         <input type="hidden" name="dateChosen" value="${dateChosen}">
         <button type="submit" name="action" value="confirm">Confirm</button>

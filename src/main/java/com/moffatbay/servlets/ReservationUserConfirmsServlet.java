@@ -8,9 +8,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebServlet("/Reservation-Confirmation")
+@WebServlet("/reservation-confirmation")
 public class ReservationUserConfirmsServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/reservation-user-confirms.jsp").forward(request, response);
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -20,9 +25,9 @@ public class ReservationUserConfirmsServlet extends HttpServlet {
             // Generate a confirmation number (dummy example)
             String confirmationNumber = "CONF" + System.currentTimeMillis();
             session.setAttribute("confirmationNumber", confirmationNumber);
-            response.sendRedirect("confirmation_page.jsp");
+            response.sendRedirect("reservation-summary");
         } else if ("cancel".equals(action)) {
-            response.sendRedirect("boat_slip_info.jsp");
+            response.sendRedirect("slip-reservation");
         }
     }
 }
