@@ -23,7 +23,7 @@
         <ul>
             <li><a href="<c:url value='/home' />">Home</a></li>
             <li><a href="<c:url value='/about' />">About Us</a></li>
-            <li><a href="<c:url value='/reservations' />">Slip Reservation</a></li>
+            <li><a href="<c:url value='/reservations-info' />">Slip Reservation</a></li>
             <li><a href="<c:url value='/reservation_lookup' />">My Reservation</a></li>
             <li><a href="<c:url value='/waitlist' />">Waitlist</a></li>
             <li>
