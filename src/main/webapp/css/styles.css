@@ -1,9 +1,13 @@
+/* General Reset */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100vh;
+    text-align: center;
+    overflow: hidden;
     overflow-y: auto;
+    font-family: 'Lato', sans-serif;
 }
 
 /* Header Styles */
@@ -11,7 +15,6 @@ header {
     width: 100%;
     padding: 10px;
     color: white;
-    text-emphasis-color: aliceblue;
 }
 
 .container {
@@ -23,7 +26,7 @@ header {
 
 .horizontal-menu {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -57,7 +60,6 @@ header {
 
 .horizontal-menu li a:hover {
     background-color: #ddd;
-    color: black;
 }
 
 /* Buttons */
@@ -73,29 +75,9 @@ header {
 
 .book-now-button:hover {
     background-color: #218838;
-    color: white !important;
-}
-
-/* General Styles */
-body {
-    padding: 20px;
-    font-family: 'Lato', sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Lato', sans-serif;
-}
-
-li {
-    color: #218838;
 }
 
 /* Background Styling */
-body.index-page, body.about-us-page, body.registration-page, body.login-page, body.reservation-page {
-    position: relative;
-    overflow: hidden;
-}
-
 body.index-page::before,
 body.about-us-page::before,
 body.registration-page::before,
@@ -121,12 +103,26 @@ body.index-page::before {
 
 body.about-us-page::before {
     background-image: url('../images/about-us-background-image.jpg');
-    background-attachment: fixed;
-    background-size: cover;
-    opacity: 0.30;
-    z-index: -1;
 }
 
+body.registration-page::before {
+    background-image: url('../images/registration-page-background-image.jpg');
+}
+
+body.login-page::before {
+    background-image: url('../images/login-page-background-image.jpg');
+}
+
+body.reservation-page::before {
+    background-image: url('../images/login-page-background-image.jpg');
+}
+
+.body.index-page {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Container Wrapper */
 .container-wrapper {
     display: flex;
     justify-content: space-between;
@@ -138,7 +134,7 @@ body.about-us-page::before {
 }
 
 .about-container, .contact-container, .c-info-container {
-    margin: 5px
+    margin: 5px;
 }
 
 .about-container {
@@ -165,7 +161,7 @@ body.about-us-page::before {
     display: flex;
     flex: 0 1 29%;
     gap: 5px;
-    background: rgb(0, 176, 192, .2);
+    background: rgba(0, 176, 192, 0.2);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 5px;
@@ -183,7 +179,7 @@ body.about-us-page::before {
 .contact-info {
     flex: 0 1 auto;
     height: auto;
-    background: rgb(255, 255, 255, .6);
+    background: rgba(255, 255, 255, 0.6);
     border-radius: 10px;
     padding: 5px;
 }
@@ -209,30 +205,17 @@ body.about-us-page::before {
     cursor: pointer;
 }
 
-.contact-form button:hover {
-    background-color: #0056b3;
+
+.landing-page-content {
+    display: flex;
+    width: 75%;
+    flex-direction: column;
+    text-align: center;
+    flex: 1 1 100%;
+    margin: auto;
+    padding: 10px;
+    height: calc(100vh - 300px);
 }
-
-
-body.registration-page {
-    position: relative;
-    overflow: hidden;
-
-
-}
-
-body.registration-page::before {
-    background-image: url('../images/registration-page-background-image.jpg');
-}
-
-body.login-page::before {
-    background-image: url('../images/login-page-background-image.jpg');
-}
-
-body.reservation-page::before {
-    background-image: url('../images/login-page-background-image.jpg');
-}
-
 /* Login & Registration Page Styling */
 .login-wrapper, .registration-wrapper, .reservation-wrapper {
     display: flex;
@@ -241,7 +224,6 @@ body.reservation-page::before {
     height: calc(100vh - 300px);
 }
 
-/* Form Containers */
 .login-container, .registration-container, .reservation-container {
     max-width: 400px;
     width: 100%;
@@ -258,7 +240,6 @@ body.reservation-page::before {
     margin-bottom: 20px;
 }
 
-/* Input Fields */
 .login-container input,
 .registration-container input,
 .reservation-container input {
@@ -272,7 +253,6 @@ body.reservation-page::before {
     box-sizing: border-box;
 }
 
-/* Input Groups */
 .input-group {
     display: flex;
     flex-direction: column;
@@ -285,11 +265,10 @@ body.reservation-page::before {
     margin-bottom: 5px;
 }
 
-/* ✅ Updated Radio Button Styling (Proper Spacing & Alignment) */
 .radio-group {
     display: flex;
     align-items: center;
-    gap: 40px; /* Ensures space between Yes and No options */
+    gap: 40px;
 }
 
 .radio-group label {
@@ -301,12 +280,11 @@ body.reservation-page::before {
 }
 
 .radio-group input[type="radio"] {
-    accent-color: #218838; /* Custom radio button color */
+    accent-color: #218838;
     width: 18px;
     height: 18px;
 }
 
-/* Submit Button */
 .login-container button,
 .registration-container button,
 .reservation-container button {
@@ -320,13 +298,33 @@ body.reservation-page::before {
     cursor: pointer;
 }
 
-.login-container button:hover,
-.registration-container button:hover,
-.reservation-container button:hover {
-    background-color: #218838;
+.index-button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    width: auto;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-/* Error Messages */
+.contact-form button:hover,
+.index-button:hover,
+.login-container button:hover,
+.registration-container button:hover,
+.reservation-container button:hover,
+.reservation-container button:hover {
+    background-color:  #0056b3;
+}
+
 .error {
     color: red;
 }
@@ -342,7 +340,6 @@ body.reservation-page::before {
     text-align: center;
 }
 
-/* Details Section */
 .details-container {
     display: flex;
     flex-wrap: wrap;
@@ -367,7 +364,6 @@ body.reservation-page::before {
     text-align: center;
 }
 
-/* Pricing Table */
 .price-box {
     background-color: rgba(255, 255, 255, 0.9);
     color: #000;
@@ -403,7 +399,6 @@ body.reservation-page::before {
     margin: 10px 0;
 }
 
-/* Reserve Button */
 .reserve-button {
     display: inline-block;
     margin-top: 20px;
@@ -413,8 +408,4 @@ body.reservation-page::before {
     text-decoration: none;
     border-radius: 5px;
     font-size: 18px;
-}
-
-.reserve-button:hover {
-    background-color: #218838;
 }
