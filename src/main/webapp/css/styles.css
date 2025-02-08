@@ -185,20 +185,20 @@ body.about-us-page::before {
     padding: 20px;
     border-radius: 10px;
     display: flex;
-    flex-direction: column; /* Stack items vertically */
+    flex-direction: column;
 }
 
 .contact-form label {
-    margin: 10px 0 5px; /* Space between labels and inputs */
+    margin: 10px 0 5px;
     display: block;
 }
 
 .contact-form input,
 .contact-form textarea {
-    padding: 10px; /* Add padding for inputs */
-    margin-bottom: 15px; /* Space below inputs */
+    padding: 10px;
+    margin-bottom: 15px;
     border: none;
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 5px;
     width: 100%;
     box-sizing: border-box;
 }
@@ -351,7 +351,7 @@ body.registration-page {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 300px); /* Adjust height as needed */
+    height: calc(100vh - 300px);
 }
 
 body.registration-page::before {
@@ -497,7 +497,7 @@ body.reservation-info-page::before {
 /* Green Box */
 .content-box {
     background: rgb(87, 176, 192, .7);
-    width: 50%;
+    width: 65%;
     margin: 20px auto;
     padding: 30px;
     border-radius: 10px;
@@ -519,12 +519,32 @@ body.reservation-info-page::before {
     padding: 5px;
     margin: 30px auto 0 auto;
     border-radius: 5px;
-    text-align: center; 
-    max-width: 400px;
+    text-align: center;
+    max-width: 800px;
+    width: 90%;
 }
 .price-box h2 {
     margin-top: 0;
 }
+
+.price-columns {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.price-column {
+    flex: 1;
+}
+
+.price-column:first-child {
+    flex: 1;
+}
+
+.price-column:last-child {
+    flex: 2;
+}
+
 .price-box ul {
     list-style-type: none;
     padding: 0;
