@@ -46,7 +46,8 @@
 
             <button type="submit">Submit</button>
         </div>
-
+    </div>
+    <div class="c-info-container">
         <!-- Contact Info -->
         <div class="contact-info">
             <h2>Contact Information</h2>
