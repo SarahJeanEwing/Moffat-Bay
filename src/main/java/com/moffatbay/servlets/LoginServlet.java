@@ -57,7 +57,15 @@ public class LoginServlet extends HttpServlet {
                     session.setAttribute("reservation", reservation);
                 }
 
-                response.sendRedirect("my_account");
+                // Check for redirectAfterLogin attribute
+                String redirectAfterLogin = (String) session.getAttribute("redirectAfterLogin");
+                if (redirectAfterLogin != null) {
+                    session.removeAttribute("redirectAfterLogin");
+                    response.sendRedirect(redirectAfterLogin);
+                } else {
+                    response.sendRedirect("my_account"); // Default redirect after login
+                }
+
             } else {
                 request.setAttribute("errorMessage", "Invalid email or password");
                 request.getRequestDispatcher("login.jsp").forward(request, response);

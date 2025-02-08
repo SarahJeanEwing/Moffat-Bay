@@ -92,10 +92,18 @@ public class RegistrationServlet extends HttpServlet {
             throw new ServletException("Error inserting customer into database", e);
         }
 
-        // Set session attribute and redirect to account page
+        // Set session attribute
         HttpSession session = request.getSession();
         session.setAttribute("user", customer);
-        response.sendRedirect("account.jsp");
+
+        // Check for redirectAfterLogin attribute
+        String redirectAfterLogin = (String) session.getAttribute("redirectAfterLogin");
+        if (redirectAfterLogin != null) {
+            session.removeAttribute("redirectAfterLogin");
+            response.sendRedirect(redirectAfterLogin);
+        } else {
+            response.sendRedirect("my_account"); // Default redirect after registration
+        }
     }
 
     private boolean emailExists(String email) {

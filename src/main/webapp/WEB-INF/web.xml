@@ -80,7 +80,7 @@
 
     <servlet>
         <servlet-name>ReservationServlet</servlet-name>
-        <servlet-class>com.moffatbay.servlets.ReservationServlet</servlet-class>
+        <servlet-class>com.moffatbay.servlets.ReservationInfoServlet</servlet-class>
     </servlet>
 
     <servlet>
