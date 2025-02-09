@@ -63,7 +63,7 @@ public class SlipReservationServlet extends HttpServlet {
 
         // Check if the duration between checkin_date and checkout_date is at least 3 months
         if (ChronoUnit.MONTHS.between(checkinDate, checkoutDate) < 3) {
-            session.setAttribute("message", "Slip Reservations must be 3 months on longer.");
+            session.setAttribute("message", "Slip Reservations must be 3 months or longer.");
             response.sendRedirect("slip-reservation");
             return;
         }
