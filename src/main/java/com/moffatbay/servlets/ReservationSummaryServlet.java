@@ -18,11 +18,6 @@ public class ReservationSummaryServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        if (session.getAttribute("reservationId") == null) {
-            response.sendRedirect("reservations-info");
-            return;
-        }
         request.getRequestDispatcher("/reservation-summary.jsp").forward(request, response);
     }
 }
