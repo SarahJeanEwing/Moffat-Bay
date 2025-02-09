@@ -15,36 +15,42 @@
 
 <c:choose>
     <c:when test="${sessionScope.reservationStatus == 'exists'}">
-        <p>A reservation already exists within this date range.</p>
-        <form action="slip-reservation" method="get">
-            <button type="submit">Go Back</button>
-        </form>
+        <div class="green-box">
+            <p>A reservation already exists within this date range.</p>
+            <form action="slip-reservation" method="get">
+                <button type="submit">Go Back</button>
+            </form>
+        </div>
     </c:when>
     <c:when test="${sessionScope.reservationStatus == 'available'}">
-        <h2>Your reservation details:</h2>
-        <p><strong>Slip ID:</strong> ${sessionScope.reservation.slipId}</p>
-        <p><strong>Check-in Date:</strong> ${sessionScope.reservation.checkinDate}</p>
-        <p><strong>Check-out Date:</strong> ${sessionScope.reservation.checkoutDate}</p>
-        <p><strong>Power:</strong> <c:out value="${sessionScope.reservation.power ? 'Yes' : 'No'}" /></p>
-        <p><strong>Total Cost per month:</strong> $<c:out value="${sessionScope.cost}" /></p>
+        <div class="green-box">
+            <h2>Your reservation details:</h2>
+            <p><strong>Slip ID:</strong> ${sessionScope.reservation.slipId}</p>
+            <p><strong>Check-in Date:</strong> ${sessionScope.reservation.checkinDate}</p>
+            <p><strong>Check-out Date:</strong> ${sessionScope.reservation.checkoutDate}</p>
+            <p><strong>Power:</strong> <c:out value="${sessionScope.reservation.power ? 'Yes' : 'No'}" /></p>
+            <p><strong>Total Cost per month:</strong> $<c:out value="${sessionScope.cost}" /></p>
 
-        <form action="reservation-confirmation" method="post">
-            <input type="hidden" name="action" value="confirm">
-            <button type="submit">Confirm Reservation</button>
-        </form>
-        <form action="reservation-confirmation" method="post">
-            <input type="hidden" name="action" value="cancel">
-            <button type="submit">Cancel</button>
-        </form>
+            <form action="reservation-confirmation" method="post">
+                <input type="hidden" name="action" value="confirm">
+                <button type="submit">Confirm Reservation</button>
+            </form>
+            <form action="reservation-confirmation" method="post">
+                <input type="hidden" name="action" value="cancel">
+                <button type="submit">Cancel</button>
+            </form>
+        </div>
     </c:when>
     <c:when test="${sessionScope.reservationStatus == 'waitlist'}">
-        <h2>No available slips found.</h2>
-        <form action="join-waitlist" method="post">
-            <input type="hidden" name="boat_size" value="${user.boatLength}">
-            <input type="hidden" name="checkInDate" value="${param.checkInDate}">
-            <input type="hidden" name="checkOutDate" value="${param.checkOutDate}">
-            <button type="submit">Join Waitlist</button>
-        </form>
+        <div class="green-box">
+            <h2>No available slips found.</h2>
+            <form action="join-waitlist" method="post">
+                <input type="hidden" name="boat_size" value="${user.boatLength}">
+                <input type="hidden" name="checkInDate" value="${param.checkInDate}">
+                <input type="hidden" name="checkOutDate" value="${param.checkOutDate}">
+                <button type="submit">Join Waitlist</button>
+            </form>
+        </div>
     </c:when>
 </c:choose>
 </body>
