@@ -26,7 +26,7 @@
         <p><strong>Check-in Date:</strong> ${sessionScope.reservation.checkinDate}</p>
         <p><strong>Check-out Date:</strong> ${sessionScope.reservation.checkoutDate}</p>
         <p><strong>Power:</strong> <c:out value="${sessionScope.reservation.power ? 'Yes' : 'No'}" /></p>
-        <p><strong>Total Cost:</strong> $<c:out value="${sessionScope.cost}" /></p>
+        <p><strong>Total Cost per month:</strong> $<c:out value="${sessionScope.cost}" /></p>
 
         <form action="reservation-confirmation" method="post">
             <input type="hidden" name="action" value="confirm">

@@ -26,7 +26,7 @@
     <p><strong>Power:</strong> <c:out value="${sessionScope.power ? 'Yes' : 'No'}" /></p>
     <p><strong>Boat Name:</strong> ${sessionScope.boatName}</p>
     <p><strong>Boat Length:</strong> ${sessionScope.boatLength}</p>
-    <p><strong>Total Cost:</strong> $<c:out value="${sessionScope.cost}" /></p>
+    <p><strong>Total Cost per month:</strong> $<c:out value="${sessionScope.cost}" /></p>
 </c:if>
 </body>
 </html>
