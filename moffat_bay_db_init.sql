@@ -92,7 +92,7 @@ VALUES
     (10064, 'mrkrabs@hmail.com', 'Eugene', 'Krabs', '567-890-1234', 'Sand Dollar', 45, '2e2244786177fa177d1dde2038a9122d2cbc9d537b9a93f370df10abae6b4b67'),
     (10078, 'plankton@coldmail.com', 'Sheldon', 'Plankton', '678-901-2345', 'Chum Bucket', 22, '1b5330f1d6f31bf1cbafe7e99d4e7946b99a8d535da93a57b3db432e4625aed3'),
     (10085, 'gary@hmail.com', 'Gary', 'Snail', '789-012-3456', 'Meow Schooner', 28, '15bebeaf2c51430a3a1b420b133002b3008e27132b420f6cd576d30b1c647edd'),
-    (10092, 'pearl@coldmail.com', 'Pearl', 'Krabs', '890-123-4567', 'Whale Wave', 32, 'cfc92b7188b419e045e6f17654db54bce30ba709ed2e2da32213291635d996ea'),
+    (10092, 'pearl@coldmail.com', 'Pearl', 'Krabs', '890-123-4567', 'Whale Wave', 42, 'cfc92b7188b419e045e6f17654db54bce30ba709ed2e2da32213291635d996ea'),
     (10106, 'larry@hmail.com', 'Larry', 'Lobster', '901-234-5678', 'Muscle Mariner', 38, '94247c129f6a1a017330c5b84fc7953c823dc92191e2febfe2c5ac1821218d3e'),
     (10302, 'mrs.puff@coldmail.com', 'Poppy', 'Puff', '012-345-6789', 'Safety Sailor', 44, 'dc2b6a57d674f451777e3b9d711ada205bb3a5a82dd5a4200719f79a532b2ddd'),
     (10312, 'bubbles@hmail.com', 'Bubbles', 'Fish', '123-654-7890', 'Bubble Blower', 24, 'fd8c2e420c8075d78da6a826cb6b3efe25f9b5295bb5da460083471c767e19e0'),
@@ -165,21 +165,21 @@ VALUES
 -- insert reservations records
 INSERT INTO reservations (reservation_id, customer_id, slip_id, checkin_date, checkout_date, active, power)
 VALUES
-    ('k9D2T4yQ', 10425, 27, '2025-01-02', '2025-01-02', TRUE, TRUE),
-    ('A7e3G5bH', 10413, 29, '2025-01-14', '2025-08-09', TRUE, FALSE),
-    ('p6V1Z8mX', 10399, 28, '2025-01-01', '2025-07-17', TRUE, TRUE),
-    ('F3c7K2jR', 10385, 30, '2025-01-09', '2025-10-08', TRUE, FALSE),
-    ('N5y4B9wL', 10375, 26, '2025-01-06', '2025-04-16', TRUE, TRUE),
-    ('Q1z8X6hM', 10366, 2, '2025-01-03', '2025-02-23', TRUE, TRUE),
-    ('T2g5J7lP', 10354, 4, '2025-01-16', '2025-03-11', TRUE, FALSE),
-    ('H8r3S1kF', 10349, 5, '2025-01-08', '2025-09-30', TRUE, TRUE),
-    ('W6v9A2pD', 10338, 3, '2025-01-09', '2025-02-28', TRUE, FALSE),
-    ('L4y7T8mQ', 10325, 1, '2025-01-10', '2025-03-07', TRUE, TRUE),
-    ('M5k1G6zN', 10517, 17, '2025-01-04', '2025-05-10', TRUE, TRUE),
-    ('X3h2Y9wV', 10468, 19, '2025-01-15', '2025-03-01', TRUE, FALSE),
-    ('B7d4K5nR', 10015, 18, '2025-01-07', '2025-03-07', TRUE, TRUE),
-    ('J2p8V6tQ', 10429, 20, '2025-01-11', '2025-02-05', TRUE, FALSE),
-    ('Z9w1F3mL', 10106, 16, '2025-01-05', '2025-02-19', TRUE, TRUE)
+    ('k9D2T4yQ', 10425, 27, '2025-01-01', '2025-04-30', TRUE, TRUE),
+    ('A7e3G5bH', 10413, 29, '2025-02-01', '2025-06-30', TRUE, FALSE),
+    ('p6V1Z8mX', 10399, 28, '2025-01-01', '2025-07-31', TRUE, TRUE),
+    ('F3c7K2jR', 10385, 30, '2024-12-01', '2025-10-31', TRUE, FALSE),
+    ('N5y4B9wL', 10375, 26, '2025-01-01', '2025-05-31', TRUE, TRUE),
+    ('Q1z8X6hM', 10366, 2, '2025-01-01', '2025-05-31', TRUE, TRUE),
+    ('T2g5J7lP', 10354, 4, '2024-12-01', '2025-04-01', TRUE, FALSE),
+    ('H8r3S1kF', 10349, 5, '2025-01-01', '2025-09-30', TRUE, TRUE),
+    ('W6v9A2pD', 10338, 3, '2025-01-01', '2025-04-30', TRUE, FALSE),
+    ('L4y7T8mQ', 10325, 1, '2025-01-01', '2025-05-31', TRUE, TRUE),
+    ('M5k1G6zN', 10517, 17, '2024-12-01', '2025-11-30', TRUE, TRUE),
+    ('X3h2Y9wV', 10468, 19, '2025-01-01', '2025-04-30', TRUE, FALSE),
+    ('B7d4K5nR', 10015, 18, '2024-11-01', '2025-07-31', TRUE, TRUE),
+    ('J2p8V6tQ', 10429, 20, '2025-02-01', '2025-06-30', TRUE, FALSE),
+    ('Z9w1F3mL', 10106, 16, '2025-01-01', '2025-05-31', TRUE, TRUE)
 ;
 
 -- insert waitlist records

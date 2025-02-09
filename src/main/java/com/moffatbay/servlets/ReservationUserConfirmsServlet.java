@@ -33,6 +33,11 @@ public class ReservationUserConfirmsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        if (session.getAttribute("reservation") == null) {
+            response.sendRedirect("reservations-info");
+            return;
+        }
         request.getRequestDispatcher("/reservation-user-confirms.jsp").forward(request, response);
     }
 

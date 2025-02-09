@@ -15,6 +15,7 @@ import java.io.Serial;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Map;
 
@@ -56,6 +57,13 @@ public class SlipReservationServlet extends HttpServlet {
         // Check if checkin_date is before checkout_date
         if (!checkinDate.isBefore(checkoutDate)) {
             session.setAttribute("message", "Check-in date must be before check-out date.");
+            response.sendRedirect("slip-reservation");
+            return;
+        }
+
+        // Check if the duration between checkin_date and checkout_date is at least 3 months
+        if (ChronoUnit.MONTHS.between(checkinDate, checkoutDate) < 3) {
+            session.setAttribute("message", "Slip Reservations must be 3 months on longer.");
             response.sendRedirect("slip-reservation");
             return;
         }

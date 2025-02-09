@@ -233,7 +233,7 @@ body.reservation-page::before {
     max-width: 400px;
     width: 100%;
     background: rgba(87, 176, 192, 0.7);
-    padding: 60px;
+    padding: 30px;
     min-height: 400px;
     border-radius: 10px;
     text-align: center;
