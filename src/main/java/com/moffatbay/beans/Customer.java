@@ -13,6 +13,9 @@ public class Customer {
     // Constructors
     public Customer() {}
 
+    public Customer(int customerId) {
+        this.customerId = customerId;}
+
     public Customer(int customerId, String email, String firstName,
                     String lastName, String telephone, String boatName,
                     int boatLength, String password) {

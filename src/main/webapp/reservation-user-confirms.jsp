@@ -10,6 +10,8 @@
 </head>
 <body class="reservation-confirmation-page">
 <jsp:include page="header.jsp" />
+<jsp:useBean id="user" scope="session" type="com.moffatbay.beans.Customer" />
+<jsp:useBean id="reservation" scope="session" type="com.moffatbay.beans.Reservation" />
 
 <h1>Reservation Confirmation</h1>
 
