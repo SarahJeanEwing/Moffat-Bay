@@ -7,31 +7,32 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import com.moffatbay.beans.Customer;
-import com.moffatbay.beans.Reservation;
+//import com.moffatbay.beans.Reservation;
 import com.moffatbay.utils.DatabaseUtils;
 import com.moffatbay.utils.PasswordHash;
 
 import java.io.IOException;
 import java.io.Serial;
 import java.security.NoSuchAlgorithmException;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.Map;
+//import java.sql.SQLException;
+//import java.util.List;
+//import java.util.Map;
+
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
-    private String dbURL;
-    private String dbUser;
-    private String dbPassword;
+    // private String dbURL;
+    // private String dbUser;
+    // private String dbPassword;
 
-    @Override
-    public void init() {
-        dbURL = getServletContext().getInitParameter("dbName");
-        dbUser = getServletContext().getInitParameter("dbUser");
-        dbPassword = getServletContext().getInitParameter("dbPass");
-    }
+    //@Override
+    // public void init() {
+       // dbURL = getServletContext().getInitParameter("dbName");
+       // dbUser = getServletContext().getInitParameter("dbUser");
+       // dbPassword = getServletContext().getInitParameter("dbPass");
+    //}
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,7 +44,7 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        Customer customer = getCustomerByEmail(email);
+        Customer customer = (Customer) DatabaseUtils.getCustomerByEmail(email);
 
         try {
             if (customer != null && PasswordHash.checkPassword(password, customer.getPassword())) {
@@ -51,11 +52,11 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("user", customer);
 
                 // Retrieve reservation details for the logged-in customer
-                Reservation reservation = getReservationForCustomer(customer.getCustomerId());
+               /*Reservation reservation = getReservationForCustomer(customer.getCustomerId());
 
-                if (reservation != null) {
-                    session.setAttribute("reservation", reservation);
-                }
+                 (reservation != null) {
+                  session.setAttribute("reservation", reservation);
+                }*/
 
                 // Check for redirectAfterLogin attribute
                 String redirectAfterLogin = (String) session.getAttribute("redirectAfterLogin");
@@ -75,7 +76,7 @@ public class LoginServlet extends HttpServlet {
         }
     }
 
-    private Customer getCustomerByEmail(String email) {
+    /* private Customer getCustomerByEmail(String email) {
         String query = "SELECT * FROM customers WHERE email = ?";
         List<Object> parameters = List.of(email);
 
@@ -98,9 +99,9 @@ public class LoginServlet extends HttpServlet {
             e.printStackTrace();
         }
         return null;
-    }
+    } */
 
-    private Reservation getReservationForCustomer(int customerId) {
+    /* private Reservation getReservationForCustomer(int customerId) {
         String query = "SELECT * FROM reservations WHERE customer_id = ? AND active = true";
         List<Object> parameters = List.of(customerId);
 
@@ -121,5 +122,5 @@ public class LoginServlet extends HttpServlet {
             e.printStackTrace();
         }
         return null;
-    }
+    } */
 }

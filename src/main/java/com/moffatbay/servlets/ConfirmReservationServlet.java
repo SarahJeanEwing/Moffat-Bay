@@ -47,7 +47,7 @@ public class ConfirmReservationServlet extends HttpServlet {
         );
 
         try {
-            DatabaseUtils.executeUpdate(query, parameters, dbURL, dbUser, dbPassword);
+            DatabaseUtils.executeUpdate(query, parameters);
             session.removeAttribute("reservation");
             session.setAttribute("reservationMessage", "Your reservation has been confirmed successfully.");
             response.sendRedirect("reservation-summary");

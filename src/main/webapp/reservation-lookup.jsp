@@ -26,11 +26,11 @@
             <p class="error">${errorMessage}</p>
         </c:if>
 
-        <form action="${pageContext.request.contextPath}/reservation-lookup" method="post">
+        <form action="${pageContext.request.contextPath}//reservation_lookup" method="post">
             <!-- Reservation Input -->
             <div class="input-group">
-                <label for="reservation_id">Email Address or Reservation Number:</label>
-                <input type="text" id="reservation_id" name="reservation_id" required>
+                <label for="lookUp">Email Address or Reservation Number:</label>
+                <input type="text" id="lookUp" name="lookUp" required>
             </div>
 
             <button type="submit" class="btn">Search</button>

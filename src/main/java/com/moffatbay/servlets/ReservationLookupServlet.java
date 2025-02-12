@@ -1,6 +1,7 @@
 package com.moffatbay.servlets;
 
 import com.moffatbay.beans.Customer;
+import com.moffatbay.beans.Reservation;
 import com.moffatbay.utils.DatabaseUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,32 +9,22 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import com.moffatbay.utils.EmailValidator;
+import jakarta.servlet.http.HttpSession;
+
 
 import java.io.IOException;
 import java.io.Serial;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+
+import static com.moffatbay.utils.DatabaseUtils.getReservationForCustomer;
 
 
 @WebServlet("/reservation_lookup")
 public class ReservationLookupServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
-    private String email;
-    private String reservationId;
-    private String customerId;
-    private String dbURL;
-    private String dbUser;
-    private String dbPassword;
+    private static String reservationId;
 
-    @Override
-    public void init() {
-        dbURL = getInitParameter("dbURL");
-        dbUser = getInitParameter("dbUser");
-        dbPassword = getInitParameter("dbPassword");
-    }
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,37 +33,40 @@ public class ReservationLookupServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String lookUp = request.getParameter("lookup");
+        String lookUp = request.getParameter("lookUp");
 
         if (EmailValidator.isValidEmail(lookUp)) {
-            email = lookUp;
-            customerId = String.valueOf(Objects.requireNonNull(getCustomerByEmail(email)).getCustomerId());
+            Customer customer = DatabaseUtils.getCustomerByEmail(lookUp);
+            try {
+                if (customer != null) {
+                    HttpSession session = request.getSession();
+                    request.setAttribute("user", customer);
+
+                    // Retrieve reservation details for the logged-in customer
+                    Reservation reservation = getReservationForCustomer(customer.getCustomerId());
+
+                    if (reservation != null) {
+                        session.setAttribute("reservation", reservation);
+                    }
+                } else {
+                    request.setAttribute("errorMessage", "Customer not found for email: " + lookUp);
+                    request.setAttribute("email", lookUp);
+                    request.getRequestDispatcher("/login.jsp").forward(request, response);
+                }
+
+            } catch (ServletException | IOException e){
+                e.printStackTrace();
+            }
         } else {
             reservationId = lookUp;
-        }
-        request.setAttribute("email", email);
-        request.setAttribute("reservationId", reservationId);
-        request.setAttribute("customerId", customerId);
-        request.getRequestDispatcher("/reservation-lookup.jsp").forward(request, response);
-
-    }
-
-    private Customer getCustomerByEmail(String email) {
-        String query = "SELECT customer_id FROM customers WHERE email = ?";
-        List<Object> parameters = List.of(email);
-
-        try {
-            List<Map<String, Object>> results = DatabaseUtils.executeQueryWithParams(query, parameters, dbURL, dbUser, dbPassword);
-            if (!results.isEmpty()) {
-                Map<String, Object> row = results.getFirst();
-                Customer customer = new Customer();
-                customer.setCustomerId((Integer) row.get("customer_id"));
-                return customer;
+            Reservation reservation = DatabaseUtils.getReservation(reservationId);
+            if (reservation != null) {
+                request.setAttribute("reservation", reservation);
             }
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
         }
-        return null;
+
+        request.getRequestDispatcher("/reservation-details.jsp").forward(request, response);
+
     }
 
 
