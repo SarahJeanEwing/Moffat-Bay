@@ -26,7 +26,7 @@
             <p class="error">${errorMessage}</p>
         </c:if>
 
-        <form action="${pageContext.request.contextPath}//reservation_lookup" method="post">
+        <form action="${pageContext.request.contextPath}/reservation_lookup" method="post">
             <!-- Reservation Input -->
             <div class="input-group">
                 <label for="lookUp">Email Address or Reservation Number:</label>
@@ -35,6 +35,36 @@
 
             <button type="submit" class="btn">Search</button>
         </form>
+
+        <!-- Display Reservation Information -->
+        <c:if test="${searchPerformed}">
+            <c:choose>
+                <c:when test="${not empty reservation}">
+                    <!-- Output for when searching by reservation ID -->
+                    <h2>Reservation Details</h2>
+                    <p><strong>Reservation ID:</strong> ${reservation.reservationId}</p>
+                    <p><strong>Slip ID:</strong> ${reservation.slipId}</p>
+                    <p><strong>Check-in Date:</strong> ${reservation.checkinDate}</p>
+                    <p><strong>Check-out Date:</strong> ${reservation.checkoutDate}</p>
+                    <p><strong>Power:</strong> <c:out value="${reservation.power ? 'Yes' : 'No'}" /></p>
+                </c:when>
+
+                <c:when test="${not empty reservations}">
+                    <h2>Reservations</h2>
+                    <c:forEach var="reservation" items="${reservations}">
+                        <!-- Output for when searching by email address, allows for multiple reservations -->
+                        <h3>Reservation ID: ${reservation.reservationId}</h3>
+                        <p><strong>Slip ID:</strong> ${reservation.slipId}</p>
+                        <p><strong>Check-in Date:</strong> ${reservation.checkinDate}</p>
+                        <p><strong>Check-out Date:</strong> ${reservation.checkoutDate}</p>
+                        <p><strong>Power:</strong> <c:out value="${reservation.power ? 'Yes' : 'No'}" /></p>
+                    </c:forEach>
+                </c:when>
+                <c:otherwise>
+                    <p>No reservation found.</p>
+                </c:otherwise>
+            </c:choose>
+        </c:if>
     </div>
 </div>
 

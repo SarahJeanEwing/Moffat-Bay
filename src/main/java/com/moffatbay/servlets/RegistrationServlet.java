@@ -23,7 +23,6 @@ public class RegistrationServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
 
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/registration.jsp").forward(request, response);
@@ -81,6 +80,9 @@ public class RegistrationServlet extends HttpServlet {
             throw new ServletException("Error inserting customer into database", e);
         }
 
+        // Update customer object with database data to retrieve new customer_ID
+        customer = DatabaseUtils.getCustomerByEmail(email);
+
         // Set session attribute
         HttpSession session = request.getSession();
         session.setAttribute("user", customer);
@@ -101,7 +103,7 @@ public class RegistrationServlet extends HttpServlet {
 
         try {
             List<Map<String, Object>> results = DatabaseUtils.executeQueryWithParams(query, parameters);
-            if (!results.isEmpty() && ((Long) results.getFirst().get("COUNT(*)")) > 0) {
+            if (!results.isEmpty() && ((Long) results.get(0).get("COUNT(*)")) > 0) {
                 return true;
             }
         } catch (SQLException | ClassNotFoundException e) {
