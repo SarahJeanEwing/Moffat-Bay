@@ -19,21 +19,12 @@ import java.util.Objects;
 
 @WebServlet("/reservation_lookup")
 public class ReservationLookupServlet extends HttpServlet {
+
     @Serial
     private static final long serialVersionUID = 1L;
-    private String email;
-    private String reservationId;
-    private String customerId;
-    private String dbURL;
-    private String dbUser;
-    private String dbPassword;
-
-    @Override
-    public void init() {
-        dbURL = getInitParameter("dbURL");
-        dbUser = getInitParameter("dbUser");
-        dbPassword = getInitParameter("dbPassword");
-    }
+    private static String email;
+    private static String reservationId;
+    private static String customerId;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -62,7 +53,7 @@ public class ReservationLookupServlet extends HttpServlet {
         List<Object> parameters = List.of(email);
 
         try {
-            List<Map<String, Object>> results = DatabaseUtils.executeQueryWithParams(query, parameters, dbURL, dbUser, dbPassword);
+            List<Map<String, Object>> results = DatabaseUtils.executeQueryWithParams(query, parameters);
             if (!results.isEmpty()) {
                 Map<String, Object> row = results.getFirst();
                 Customer customer = new Customer();
@@ -74,7 +65,4 @@ public class ReservationLookupServlet extends HttpServlet {
         }
         return null;
     }
-
-
-
 }
