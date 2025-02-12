@@ -61,7 +61,7 @@ public class ReservationUserConfirmsServlet extends HttpServlet {
                         reservation.isPower()
                 );
 
-                DatabaseUtils.executeUpdate(query, parameters, dbURL, dbUser, dbPassword);
+                DatabaseUtils.executeUpdate(query, parameters);
 
                 // Calculate the cost
                 Customer user = (Customer) session.getAttribute("user");

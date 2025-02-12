@@ -24,17 +24,6 @@ public class SlipReservationServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private String dbURL;
-    private String dbUser;
-    private String dbPassword;
-
-    @Override
-    public void init() {
-        dbURL = getServletContext().getInitParameter("dbName");
-        dbUser = getServletContext().getInitParameter("dbUser");
-        dbPassword = getServletContext().getInitParameter("dbPass");
-    }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/slip-reservation.jsp").forward(request, response);
@@ -73,7 +62,7 @@ public class SlipReservationServlet extends HttpServlet {
         List<Object> existingReservationParams = List.of(customerId, checkoutDateStr, checkinDateStr, checkinDateStr, checkoutDateStr, checkinDateStr, checkoutDateStr);
 
         try {
-            List<Map<String, Object>> existingReservations = DatabaseUtils.executeQueryWithParams(existingReservationQuery, existingReservationParams, dbURL, dbUser, dbPassword);
+            List<Map<String, Object>> existingReservations = DatabaseUtils.executeQueryWithParams(existingReservationQuery, existingReservationParams);
             if (!existingReservations.isEmpty()) {
                 // Reservation already exists within the date range
                 session.setAttribute("reservationStatus", "exists");
@@ -90,7 +79,7 @@ public class SlipReservationServlet extends HttpServlet {
                     "(bs.slip_size = 50 AND ? BETWEEN 40 AND 49))";
             List<Object> parameters = List.of(checkoutDateStr, checkinDateStr, boatSize, boatSize, boatSize);
 
-            List<Map<String, Object>> results = DatabaseUtils.executeQueryWithParams(query, parameters, dbURL, dbUser, dbPassword);
+            List<Map<String, Object>> results = DatabaseUtils.executeQueryWithParams(query, parameters);
             if (!results.isEmpty()) {
                 // Create Reservation object
                 Reservation reservation = new Reservation();

@@ -59,7 +59,7 @@ public class JoinWaitlistServlet extends HttpServlet {
         List<Object> existingWaitlistParams = List.of(user.getCustomerId(), slipSize);
 
         try {
-            List<Map<String, Object>> existingWaitlistEntries = DatabaseUtils.executeQueryWithParams(existingWaitlistQuery, existingWaitlistParams, dbURL, dbUser, dbPassword);
+            List<Map<String, Object>> existingWaitlistEntries = DatabaseUtils.executeQueryWithParams(existingWaitlistQuery, existingWaitlistParams);
             if (!existingWaitlistEntries.isEmpty()) {
                 // User is already on the waitlist
                 session.setAttribute("waitlistMessage", "You are already on the waitlist and will be contacted when there is an available slip.");
@@ -80,7 +80,7 @@ public class JoinWaitlistServlet extends HttpServlet {
                     slipSize
             );
 
-            DatabaseUtils.executeUpdate(query, parameters, dbURL, dbUser, dbPassword);
+            DatabaseUtils.executeUpdate(query, parameters);
             session.removeAttribute("reservation");
             session.setAttribute("waitlistMessage", "You have been successfully added to the waitlist.");
             response.sendRedirect("reservation-summary");

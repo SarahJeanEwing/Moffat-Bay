@@ -77,8 +77,9 @@ header {
     background-color: #218838;
 }
 
-/* Background Styling */
+/* Background Styling common elements */
 body.index-page::before,
+body.reservation-lookup-page::before,
 body.about-us-page::before,
 body.registration-page::before,
 body.reservation-confirmation-page::before,
@@ -97,7 +98,7 @@ body.reservation-page::before {
     opacity: 0.30;
     z-index: -1;
 }
-
+/* Background Images */
 body.index-page::before {
     background-image: url('../images/landing-page-background-image.jpg');
 }
@@ -110,7 +111,7 @@ body.registration-page::before {
     background-image: url('../images/registration-page-background-image.jpg');
 }
 
-body.reservation-confirmation-page::before {
+body.reservation-confirmation-page::before, body.reservation-lookup-page::before {
     background-image: url('../images/reservation-us-background-image.jpeg');
 }
 
@@ -125,6 +126,15 @@ body.reservation-page::before {
 .body.index-page {
     position: relative;
     overflow: hidden;
+}
+
+.body.reservation-lookup-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 80px;
 }
 
 /* Container Wrapper */
@@ -172,6 +182,76 @@ body.reservation-page::before {
     padding: 5px;
     height: 300px;
 }
+
+/* ---------------------RESERVATION LOOK UP SECTION------------------------- */
+.reservation-lookup-container {
+    max-width: 700px;
+    width: 90%;
+    max-height: 500px;
+    height: 40%;
+    background: #DCD7C9;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px 4px rgba(141, 73, 58, 0.1);
+    text-align: center;
+}
+
+.reservation-lookup-container h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #2C3930;
+}
+
+.reservation-lookup-container p {
+    font-size: 16px;
+    color: #3F4F44;
+    margin-bottom: 20px;
+}
+
+.reservation-lookup-container .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.reservation-lookup-container .input-group label {
+    font-weight: bold;
+    margin-top: 35px;
+    margin-bottom: 5px;
+    color: #3F4F44;
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+.reservation-lookup-container input {
+    width: 80%;
+    margin: 0 auto;
+    height: 35px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.reservation-lookup-container button {
+    width: 200px;
+    margin-top: 30px;
+    background-color: #3F4F44;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.reservation-lookup-container button:hover {
+    background-color: #2C3930;
+}
+/* -------------------------End Reservation lookup-------------------------- */
 
 .contact-form {
     flex: 1 1 100%;
@@ -222,7 +302,10 @@ body.reservation-page::before {
     height: calc(100vh - 300px);
 }
 /* Login & Registration Page Styling */
-.login-wrapper, .registration-wrapper, .reservation-wrapper {
+.login-wrapper,
+.registration-wrapper,
+.reservation-wrapper,
+.reservation-lookup-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
