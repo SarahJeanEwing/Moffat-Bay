@@ -17,7 +17,8 @@ USE `moffat-bay`;
 DROP USER IF EXISTS 'dbadmin'@'localhost';
 
 -- create dbadmin and grant them all privileges to the moffat-bay database
-CREATE USER 'dbadmin'@'localhost' IDENTIFIED WITH mysql_native_password BY 'master01';
+INSTALL PLUGIN mysql_native_password SONAME 'auth_socket.so';
+CREATE USER 'dbadmin'@'localhost' IDENTIFIED BY 'master01';
 
 -- grant all privileges to the moffat-bay database to user dbadmin on localhost
 GRANT ALL PRIVILEGES ON `moffat-bay`.* TO 'dbadmin'@'localhost';

@@ -22,17 +22,6 @@ public class JoinWaitlistServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private String dbURL;
-    private String dbUser;
-    private String dbPassword;
-
-    @Override
-    public void init() {
-        dbURL = getServletContext().getInitParameter("dbName");
-        dbUser = getServletContext().getInitParameter("dbUser");
-        dbPassword = getServletContext().getInitParameter("dbPass");
-    }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -59,7 +48,7 @@ public class JoinWaitlistServlet extends HttpServlet {
         List<Object> existingWaitlistParams = List.of(user.getCustomerId(), slipSize);
 
         try {
-            List<Map<String, Object>> existingWaitlistEntries = DatabaseUtils.executeQueryWithParams(existingWaitlistQuery, existingWaitlistParams, dbURL, dbUser, dbPassword);
+            List<Map<String, Object>> existingWaitlistEntries = DatabaseUtils.executeQueryWithParams(existingWaitlistQuery, existingWaitlistParams);
             if (!existingWaitlistEntries.isEmpty()) {
                 // User is already on the waitlist
                 session.setAttribute("waitlistMessage", "You are already on the waitlist and will be contacted when there is an available slip.");
@@ -80,7 +69,7 @@ public class JoinWaitlistServlet extends HttpServlet {
                     slipSize
             );
 
-            DatabaseUtils.executeUpdate(query, parameters, dbURL, dbUser, dbPassword);
+            DatabaseUtils.executeUpdate(query, parameters);
             session.removeAttribute("reservation");
             session.setAttribute("waitlistMessage", "You have been successfully added to the waitlist.");
             response.sendRedirect("reservation-summary");

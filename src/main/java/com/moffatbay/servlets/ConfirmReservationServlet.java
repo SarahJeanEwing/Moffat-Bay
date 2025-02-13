@@ -19,17 +19,6 @@ public class ConfirmReservationServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private String dbURL;
-    private String dbUser;
-    private String dbPassword;
-
-    @Override
-    public void init() {
-        dbURL = getServletContext().getInitParameter("dbName");
-        dbUser = getServletContext().getInitParameter("dbUser");
-        dbPassword = getServletContext().getInitParameter("dbPass");
-    }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -47,7 +36,7 @@ public class ConfirmReservationServlet extends HttpServlet {
         );
 
         try {
-            DatabaseUtils.executeUpdate(query, parameters, dbURL, dbUser, dbPassword);
+            DatabaseUtils.executeUpdate(query, parameters);
             session.removeAttribute("reservation");
             session.setAttribute("reservationMessage", "Your reservation has been confirmed successfully.");
             response.sendRedirect("reservation-summary");

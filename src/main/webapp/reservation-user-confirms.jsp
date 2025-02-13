@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="<c:url value='/css/styles.css' />">
 </head>
 <body class="reservation-confirmation-page">
-<jsp:include page="header.jsp" />
 
 <h1>Reservation Confirmation</h1>
 

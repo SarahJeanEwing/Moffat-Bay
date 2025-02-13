@@ -78,6 +78,11 @@
         <servlet-class>com.moffatbay.servlets.ReservationLookupServlet</servlet-class>
     </servlet>
 
+    <servlet-mapping>
+        <servlet-name>ReservationLookupServlet</servlet-name>
+        <url-pattern>/reservation_lookup</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>ReservationServlet</servlet-name>
         <servlet-class>com.moffatbay.servlets.ReservationInfoServlet</servlet-class>

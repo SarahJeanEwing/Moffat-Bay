@@ -3,7 +3,6 @@ package com.moffatbay.servlets;
 import com.moffatbay.beans.Customer;
 import com.moffatbay.utils.PasswordHash;
 import com.moffatbay.utils.DatabaseUtils;
-import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,17 +22,6 @@ import java.util.Map;
 public class RegistrationServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
-    private String dbURL;
-    private String dbUser;
-    private String dbPassword;
-
-    @Override
-    public void init() throws ServletException {
-        ServletContext context = getServletContext();
-        dbURL = context.getInitParameter("dbName");
-        dbUser = context.getInitParameter("dbUser");
-        dbPassword = context.getInitParameter("dbPass");
-    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -87,10 +75,13 @@ public class RegistrationServlet extends HttpServlet {
         parameters.add(hashedPassword);
 
         try {
-            DatabaseUtils.executeUpdate(query, parameters, dbURL, dbUser, dbPassword);
+            DatabaseUtils.executeUpdate(query, parameters);
         } catch (SQLException | ClassNotFoundException e) {
             throw new ServletException("Error inserting customer into database", e);
         }
+
+        // Update customer object with database data to retrieve new customer_ID
+        customer = DatabaseUtils.getCustomerByEmail(email);
 
         // Set session attribute
         HttpSession session = request.getSession();
@@ -111,7 +102,7 @@ public class RegistrationServlet extends HttpServlet {
         List<Object> parameters = List.of(email);
 
         try {
-            List<Map<String, Object>> results = DatabaseUtils.executeQueryWithParams(query, parameters, dbURL, dbUser, dbPassword);
+            List<Map<String, Object>> results = DatabaseUtils.executeQueryWithParams(query, parameters);
             if (!results.isEmpty() && ((Long) results.get(0).get("COUNT(*)")) > 0) {
                 return true;
             }
