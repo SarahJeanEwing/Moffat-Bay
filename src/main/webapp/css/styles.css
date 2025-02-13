@@ -283,6 +283,7 @@ body.reservation-page::before {
     border-radius: 10px;
     padding: 5px;
     background-color: ghostwhite;
+    box-shadow: 0 4px 10px 4px rgba(141, 73, 58, 0.1);
 }
 
 .reservation-lookup-results-table tr:nth-child(even) {
@@ -463,13 +464,10 @@ body.reservation-page::before {
     font-size: 18px;
     width: auto;
     cursor: pointer;
-    margin-left: auto;
-    margin-right: auto;
     display: block;
     text-align: center;
     text-decoration: none;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px auto;
 }
 
 .contact-form button:hover,

@@ -40,45 +40,55 @@
         </div>
 
         <!-- Display Reservation Information -->
+        <c:if test="${searchPerformed}">
         <div class="reservation-lookup-results">
-            <c:if test="${searchPerformed}">
-                <c:choose>
-                    <c:when test="${not empty reservation}">
-                        <!-- Output for when searching by reservation ID -->
-                        <h2>Reservation Details</h2>
-                        <p><strong>Reservation ID:</strong> ${reservation.reservationId}</p>
-                        <p><strong>Slip ID:</strong> ${reservation.slipId}</p>
-                        <p><strong>Check-in Date:</strong> ${reservation.checkinDate}</p>
-                        <p><strong>Check-out Date:</strong> ${reservation.checkoutDate}</p>
-                        <p><strong>Power:</strong> <c:out value="${reservation.power ? 'Yes' : 'No'}" /></p>
-                    </c:when>
+            <c:choose>
+            <c:when test="${not empty reservation}">
+            <!-- Output for when searching by reservation ID -->
+            <h2>Reservation Details</h2>
+            <table class="reservation-lookup-results-table">
+                <tr>
+                    <th>Reservation ID</th>
+                    <th>Slip ID</th>
+                    <th>Check-in Date</th>
+                    <th>Check-out Date</th>
+                    <th>Power</th>
+                </tr>
+                <tr>
+                    <td>${reservation.reservationId}</td>
+                    <td>${reservation.slipId}</td>
+                    <td>${reservation.checkinDate}</td>
+                    <td>${reservation.checkoutDate}</td>
+                    <td><c:out value="${reservation.power ? 'Yes' : 'No'}" /></td>
+                </tr>
+                </c:when>
 
-                    <c:when test="${not empty reservations}">
-                        <h2>Reservations</h2>
-                        <table class="reservation-lookup-results-table">
-                            <tr>
-                                <th>Reservation ID</th>
-                                <th>Slip ID</th>
-                                <th>Check-in Date</th>
-                                <th>Check-out Date</th>
-                                <th>Power</th>
-                            </tr>
-                            <c:forEach var="reservation" items="${reservations}">
-                                <tr>
-                                    <td>${reservation.reservationId}</td>
-                                    <td>${reservation.slipId}</td>
-                                    <td>${reservation.checkinDate}</td>
-                                    <td>${reservation.checkoutDate}</td>
-                                    <td><c:out value="${reservation.power ? 'Yes' : 'No'}" /></td>
-                                </tr>
-                            </c:forEach>
-                        </table>
-                    </c:when>
-                    <c:otherwise>
-                        <p>No reservation found.</p>
-                    </c:otherwise>
+                <c:when test="${not empty reservations}">
+                <h2>Reservation Details</h2>
+                <table class="reservation-lookup-results-table">
+                    <tr>
+                        <th>Reservation ID</th>
+                        <th>Slip ID</th>
+                        <th>Check-in Date</th>
+                        <th>Check-out Date</th>
+                        <th>Power</th>
+                    </tr>
+                    <c:forEach var="reservation" items="${reservations}">
+                        <tr>
+                            <td>${reservation.reservationId}</td>
+                            <td>${reservation.slipId}</td>
+                            <td>${reservation.checkinDate}</td>
+                            <td>${reservation.checkoutDate}</td>
+                            <td><c:out value="${reservation.power ? 'Yes' : 'No'}" /></td>
+                        </tr>
+                    </c:forEach>
+                </table>
+                </c:when>
+                <c:otherwise>
+                <p>No reservation found.</p>
+                </c:otherwise>
                 </c:choose>
-            </c:if>
+                </c:if>
         </div>
     </div>
 </div>
