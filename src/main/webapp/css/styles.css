@@ -370,6 +370,20 @@ body.reservation-page::before {
     padding: 10px;
     height: calc(100vh - 300px);
 }
+
+.landing-page-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.left-image, .right-image {
+    width: 25%;
+    max-width: 200px; /* Adjust this value as needed */
+    border-radius: 10px;
+}
+
 /* Login & Registration Page Styling */
 .login-wrapper,
 .registration-wrapper,
