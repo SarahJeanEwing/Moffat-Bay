@@ -15,56 +15,71 @@
 
 <!-- Lookup Form -->
 <div class="reservation-lookup-wrapper">
-    <!-- Lookup Form Container -->
+    <!-- Lookup Container -->
     <div class="reservation-lookup-container">
-        <h1>Look up Existing Reservations</h1>
+        <!-- Lookup form -->
+        <div class="reservation-lookup-form">
+            <h1>Look up Existing Reservations</h1>
 
-        <p>Enter your email or the confirmation # received during booking to view your existing reservation.</p>
+            <p>Enter your email or the confirmation # received during booking to view your existing reservation.</p>
 
-        <!-- Display Error Message (if any) -->
-        <c:if test="${not empty errorMessage}">
-            <p class="error">${errorMessage}</p>
-        </c:if>
+            <!-- Display Error Message (if any) -->
+            <c:if test="${not empty errorMessage}">
+                <p class="error">${errorMessage}</p>
+            </c:if>
 
-        <form action="${pageContext.request.contextPath}/reservation_lookup" method="post">
-            <!-- Reservation Input -->
-            <div class="input-group">
-                <label for="lookUp">Email Address or Reservation Number:</label>
-                <input type="text" id="lookUp" name="lookUp" required>
-            </div>
+            <form action="${pageContext.request.contextPath}/reservation_lookup" method="post">
+                <!-- Reservation Input -->
+                <div class="input-group">
+                    <label for="lookUp">Email Address or Reservation Number:</label>
+                    <input type="text" id="lookUp" name="lookUp" required>
+                </div>
 
-            <button type="submit" class="btn">Search</button>
-        </form>
+                <button type="submit" class="btn">Search</button>
+            </form>
+        </div>
 
         <!-- Display Reservation Information -->
-        <c:if test="${searchPerformed}">
-            <c:choose>
-                <c:when test="${not empty reservation}">
-                    <!-- Output for when searching by reservation ID -->
-                    <h2>Reservation Details</h2>
-                    <p><strong>Reservation ID:</strong> ${reservation.reservationId}</p>
-                    <p><strong>Slip ID:</strong> ${reservation.slipId}</p>
-                    <p><strong>Check-in Date:</strong> ${reservation.checkinDate}</p>
-                    <p><strong>Check-out Date:</strong> ${reservation.checkoutDate}</p>
-                    <p><strong>Power:</strong> <c:out value="${reservation.power ? 'Yes' : 'No'}" /></p>
-                </c:when>
-
-                <c:when test="${not empty reservations}">
-                    <h2>Reservations</h2>
-                    <c:forEach var="reservation" items="${reservations}">
-                        <!-- Output for when searching by email address, allows for multiple reservations -->
-                        <h3>Reservation ID: ${reservation.reservationId}</h3>
+        <div class="reservation-lookup-results">
+            <c:if test="${searchPerformed}">
+                <c:choose>
+                    <c:when test="${not empty reservation}">
+                        <!-- Output for when searching by reservation ID -->
+                        <h2>Reservation Details</h2>
+                        <p><strong>Reservation ID:</strong> ${reservation.reservationId}</p>
                         <p><strong>Slip ID:</strong> ${reservation.slipId}</p>
                         <p><strong>Check-in Date:</strong> ${reservation.checkinDate}</p>
                         <p><strong>Check-out Date:</strong> ${reservation.checkoutDate}</p>
                         <p><strong>Power:</strong> <c:out value="${reservation.power ? 'Yes' : 'No'}" /></p>
-                    </c:forEach>
-                </c:when>
-                <c:otherwise>
-                    <p>No reservation found.</p>
-                </c:otherwise>
-            </c:choose>
-        </c:if>
+                    </c:when>
+
+                    <c:when test="${not empty reservations}">
+                        <h2>Reservations</h2>
+                        <table class="reservation-lookup-results-table">
+                            <tr>
+                                <th>Reservation ID</th>
+                                <th>Slip ID</th>
+                                <th>Check-in Date</th>
+                                <th>Check-out Date</th>
+                                <th>Power</th>
+                            </tr>
+                            <c:forEach var="reservation" items="${reservations}">
+                                <tr>
+                                    <td>${reservation.reservationId}</td>
+                                    <td>${reservation.slipId}</td>
+                                    <td>${reservation.checkinDate}</td>
+                                    <td>${reservation.checkoutDate}</td>
+                                    <td><c:out value="${reservation.power ? 'Yes' : 'No'}" /></td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </c:when>
+                    <c:otherwise>
+                        <p>No reservation found.</p>
+                    </c:otherwise>
+                </c:choose>
+            </c:if>
+        </div>
     </div>
 </div>
 

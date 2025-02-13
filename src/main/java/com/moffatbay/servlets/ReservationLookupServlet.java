@@ -1,6 +1,5 @@
 package com.moffatbay.servlets;
 
-import com.moffatbay.beans.Customer;
 import com.moffatbay.beans.Reservation;
 import com.moffatbay.utils.DatabaseUtils;
 import com.moffatbay.utils.EmailValidator;
