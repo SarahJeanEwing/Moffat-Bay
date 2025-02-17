@@ -27,8 +27,8 @@
     </div>
 
     <!-- Contact Us Section -->
-    <div class="contact-container">
-        <!-- Contact Form -->
+    <!--<div class="contact-container">
+        /* Contact Form */
         <div class="contact-form">
             <h2>Contact Us!</h2>
 
@@ -46,7 +46,8 @@
 
             <button type="submit">Submit</button>
         </div>
-
+    </div> -->
+    <div class="c-info-container">
         <!-- Contact Info -->
         <div class="contact-info">
             <h2>Contact Information</h2>

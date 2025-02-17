@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <!DOCTYPE html>
@@ -19,7 +19,12 @@
     <div class="reservation-container">
         <h1>Slip Reservation</h1>
 
-        <form action="process-slip-reservation" method="post">
+        <c:if test="${not empty sessionScope.message}">
+            <p style="color: red;">${sessionScope.message}</p>
+            <c:remove var="message" scope="session" />
+        </c:if>
+
+        <form action="slip-reservation" method="post">
             <!-- Boat Name (Disabled but Visible) -->
             <div class="input-group">
                 <label for="boatName">Boat Name:</label>
@@ -30,6 +35,7 @@
             <div class="input-group">
                 <label for="boatLength">Boat Length:</label>
                 <input type="text" id="boatLength" name="boatLength" value="${user.boatLength}" disabled>
+                <input type="hidden" id="hiddenBoatLength" name="hiddenBoatLength" value="${user.boatLength}">
             </div>
 
             <!-- Check-in Date -->

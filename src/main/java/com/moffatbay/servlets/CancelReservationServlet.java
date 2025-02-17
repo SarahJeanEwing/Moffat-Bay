@@ -10,14 +10,15 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.Serial;
 
-
-@WebServlet("/reservation-summary")
-public class ReservationSummaryServlet extends HttpServlet {
+@WebServlet("/cancel-reservation")
+public class CancelReservationServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/reservation-summary.jsp").forward(request, response);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        session.removeAttribute("reservation");
+        response.sendRedirect("slip-reservation");
     }
 }

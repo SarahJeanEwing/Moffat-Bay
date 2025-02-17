@@ -1,8 +1,8 @@
 package com.moffatbay.servlets;
 
+import com.moffatbay.beans.Customer;
 import com.moffatbay.beans.Reservation;
 import com.moffatbay.utils.DatabaseUtils;
-import com.moffatbay.utils.EmailValidator;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,8 +17,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-@WebServlet("/reservation_lookup")
-public class ReservationLookupServlet extends HttpServlet {
+@WebServlet("/my_reservation")
+public class MyReservationServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
     private static String email;
@@ -27,33 +27,18 @@ public class ReservationLookupServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/reservation-lookup.jsp").forward(request, response);
-    }
+        Customer customer = (Customer) request.getSession().getAttribute("user");
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String lookUp = request.getParameter("lookUp");
-
-        // Look up by email or reservation ID
-        boolean searchPerformed = true;
-        if (EmailValidator.isValidEmail(lookUp)) {
-            email = lookUp;
-            customerId = String.valueOf(Objects.requireNonNull(DatabaseUtils.getCustomerByEmail(email)).getCustomerId());
-            // Get reservations by customer ID
-            List<Reservation> reservations = getReservationsByCustomerId(customerId);
-            request.setAttribute("reservations", reservations);
-        } else {
-            reservationId = lookUp;
-            // Get reservation by reservation ID
-            Reservation reservation = getReservationByReservationId(reservationId);
-            request.setAttribute("reservation", reservation);
-        }
+        email = customer.getEmail();
+        customerId = String.valueOf(Objects.requireNonNull(DatabaseUtils.getCustomerByEmail(email)).getCustomerId());
+        // Get reservations by customer ID
+        List<Reservation> reservations = getReservationsByCustomerId(customerId);
+        request.setAttribute("reservations", reservations);
 
         request.setAttribute("email", email);
         request.setAttribute("reservationId", reservationId);
         request.setAttribute("customerId", customerId);
-        request.setAttribute("searchPerformed", searchPerformed); // New attribute
-        request.getRequestDispatcher("/reservation-lookup.jsp").forward(request, response);
+        request.getRequestDispatcher("/my-reservation.jsp").forward(request, response);
     }
 
 
@@ -68,21 +53,6 @@ public class ReservationLookupServlet extends HttpServlet {
             e.printStackTrace();
         }
         return List.of();
-    }
-
-    private Reservation getReservationByReservationId(String reservationId) {
-        String query = "SELECT * FROM reservations WHERE reservation_id = ?";
-        List<Object> parameters = List.of(reservationId);
-
-        try {
-            List<Map<String, Object>> results = DatabaseUtils.executeQueryWithParams(query, parameters);
-            if (!results.isEmpty()) {
-                return mapToReservation(results.get(0));
-            }
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     private Reservation mapToReservation(Map<String, Object> row) {

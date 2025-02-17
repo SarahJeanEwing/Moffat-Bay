@@ -24,7 +24,7 @@ public class Reservation {
         String reservationID;
         do {
             reservationID = generateRandomReservationID();
-        } while (reservationIDExists(reservationID)); // Corrected variable name
+        } while (reservationIDExists(reservationID));
         return reservationID;
     }
 
@@ -44,7 +44,7 @@ public class Reservation {
         List<Object> parameters = List.of(reservationId);
 
         try {
-            List<Map<String, Object>> results = DatabaseUtils.executeQueryWithParams(query, parameters, "jdbc:mysql://localhost:3306/moffat-bay", "dbadmin", "master01");
+            List<Map<String, Object>> results = DatabaseUtils.executeQueryWithParams(query, parameters);
             if (!results.isEmpty()) {
                 Map<String, Object> row = results.get(0);
                 long count = (long) row.get("count");

@@ -13,7 +13,6 @@
 <body class="index-page">
 <jsp:include page="header.jsp"/>
 <jsp:useBean id="user" scope="session" type="com.moffatbay.beans.Customer"/>
-<jsp:useBean id="reservation" scope="session" type="com.moffatbay.beans.Reservation"/>
 <div class="account-container">
     <h1>My Account</h1>
 

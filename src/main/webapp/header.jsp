@@ -24,7 +24,16 @@
             <li><a href="<c:url value='/home' />">Home</a></li>
             <li><a href="<c:url value='/about' />">About Us</a></li>
             <li><a href="<c:url value='/reservations-info' />">Slip Reservation</a></li>
-            <li><a href="<c:url value='/reservation_lookup' />">My Reservation</a></li>
+            <li>
+                <c:choose>
+                    <c:when test="${not empty sessionScope.user}">
+                        <a href="<c:url value='/my_reservation' />">My Reservation</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="<c:url value='/reservation_lookup' />">Reservation Lookup</a>
+                    </c:otherwise>
+                </c:choose>
+            </li>
             <li><a href="<c:url value='/waitlist' />">Waitlist</a></li>
             <li>
                 <c:choose>

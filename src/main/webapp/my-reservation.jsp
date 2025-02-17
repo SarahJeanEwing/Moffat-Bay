@@ -15,54 +15,10 @@
 
 <!-- Lookup Form -->
 <div class="reservation-lookup-wrapper">
-    <!-- Lookup Container -->
     <div class="reservation-lookup-container">
-        <!-- Lookup form -->
-        <div class="reservation-lookup-form">
-            <h1>Look up Existing Reservations</h1>
-
-            <p>Enter your email or the confirmation # received during booking to view your existing reservation.</p>
-
-            <!-- Display Error Message (if any) -->
-            <c:if test="${not empty errorMessage}">
-                <p class="error">${errorMessage}</p>
-            </c:if>
-
-            <form action="${pageContext.request.contextPath}/reservation_lookup" method="post">
-                <!-- Reservation Input -->
-                <div class="input-group">
-                    <label for="lookUp">Email Address or Reservation Number:</label>
-                    <input type="text" id="lookUp" name="lookUp" required>
-                </div>
-
-                <button type="submit" class="btn">Search</button>
-            </form>
-        </div>
-
         <!-- Display Reservation Information -->
-        <c:if test="${searchPerformed}">
         <div class="reservation-lookup-results">
             <c:choose>
-            <c:when test="${not empty reservation}">
-            <!-- Output for when searching by reservation ID -->
-            <h2>Reservation Details</h2>
-            <table class="reservation-lookup-results-table">
-                <tr>
-                    <th>Reservation ID</th>
-                    <th>Slip ID</th>
-                    <th>Check-in Date</th>
-                    <th>Check-out Date</th>
-                    <th>Power</th>
-                </tr>
-                <tr>
-                    <td>${reservation.reservationId}</td>
-                    <td>${reservation.slipId}</td>
-                    <td>${reservation.checkinDate}</td>
-                    <td>${reservation.checkoutDate}</td>
-                    <td><c:out value="${reservation.power ? 'Yes' : 'No'}" /></td>
-                </tr>
-                </c:when>
-
                 <c:when test="${not empty reservations}">
                 <h2>Reservation Details</h2>
                 <table class="reservation-lookup-results-table">
@@ -88,7 +44,6 @@
                 <p>No reservation found.</p>
                 </c:otherwise>
                 </c:choose>
-                </c:if>
         </div>
     </div>
 </div>
