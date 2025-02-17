@@ -349,7 +349,6 @@ body.reservation-page::before {
     border: none;
     border-radius: 5px;
 }
-
 .contact-form button {
     padding: 10px;
     background-color: #007BFF;
@@ -380,7 +379,7 @@ body.reservation-page::before {
 
 .left-image, .right-image {
     width: 25%;
-    max-width: 200px; /* Adjust this value as needed */
+    max-width: 200px;
     border-radius: 10px;
 }
 
@@ -606,3 +605,4 @@ body.reservation-page::before {
         font-size: 12px;
     }
 }
+

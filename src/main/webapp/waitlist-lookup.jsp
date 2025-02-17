@@ -10,9 +10,29 @@
 </head>
 <body class="index-page">
 <jsp:include page="header.jsp" />
-<div class="coming-soon-content">
-    <h1>Waitlist Look Up</h1>
-    <p>Coming Soon...</p>
+
+<!-- Main Container -->
+<div class="waitlist-container">
+    <h1>Marina Slip Waitlist</h1>
+
+    <!-- Slip Categories -->
+    <div class="waitlist-box">
+        <div class="slip-item">
+            <div class="circle">5</div>
+            <p>26' Slip</p>
+        </div>
+        <div class="slip-item">
+            <div class="circle">1</div>
+            <p>40' Slip</p>
+        </div>
+        <div class="slip-item">
+            <div class="circle">2</div>
+            <p>50' Slip</p>
+        </div>
+    </div>
+
+    <p class="subtext">Customers in Line</p>
 </div>
+
 </body>
 </html>
