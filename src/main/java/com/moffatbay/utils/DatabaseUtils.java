@@ -146,4 +146,38 @@ public class DatabaseUtils {
         }
         return null;
     }
+
+    public static int getAvailableSlipsCountBySize(int slipSize) throws SQLException, ClassNotFoundException {
+        String query = "SELECT COUNT(*) AS count FROM boat_slips WHERE slip_size = ? AND in_use = 0";
+        List<Object> parameters = List.of(slipSize);
+
+        List<Map<String, Object>> results = executeQueryWithParams(query, parameters);
+        if (!results.isEmpty()) {
+            Map<String, Object> row = results.get(0);
+            Object countObj = row.get("count");
+            if (countObj instanceof Long) {
+                return ((Long) countObj).intValue();
+            } else if (countObj instanceof Integer) {
+                return (Integer) countObj;
+            }
+        }
+        return 0;
+    }
+
+    public static int getWaitlistCountBySlipSize(int slipSize) throws SQLException, ClassNotFoundException {
+        String query = "SELECT COUNT(*) AS count FROM waitlist WHERE slip_size = ? AND active = 1";
+        List<Object> parameters = List.of(slipSize);
+
+        List<Map<String, Object>> results = executeQueryWithParams(query, parameters);
+        if (!results.isEmpty()) {
+            Map<String, Object> row = results.get(0);
+            Object countObj = row.get("count");
+            if (countObj instanceof Long) {
+                return ((Long) countObj).intValue();
+            } else if (countObj instanceof Integer) {
+                return (Integer) countObj;
+            }
+        }
+        return 0;
+    }
 }
