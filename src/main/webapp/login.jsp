@@ -19,6 +19,7 @@
         <h1>Log In</h1>
 
         <!-- Display Error Message (if any) -->
+        <%--@elvariable id="errorMessage" type="post"--%>
         <c:if test="${not empty errorMessage}">
             <p class="error">${errorMessage}</p>
         </c:if>
