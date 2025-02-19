@@ -17,21 +17,21 @@
 
     <!-- Slip Categories -->
     <div class="waitlist-box">
-        <div class="slip-item">
-            <div class="circle">5</div>
-            <p>26' Slip</p>
-        </div>
-        <div class="slip-item">
-            <div class="circle">1</div>
-            <p>40' Slip</p>
-        </div>
-        <div class="slip-item">
-            <div class="circle">2</div>
-            <p>50' Slip</p>
-        </div>
+        <!-- Loop through the customersInLineMap to display waitlist information -->
+        <c:forEach var="entry" items="${customersInLineMap}">
+            <div class="slip-item">
+                <div class="circle">${entry.value}</div>
+                <p>${entry.key}' Slip</p>
+            </div>
+        </c:forEach>
     </div>
 
     <p class="subtext">Customers in Line</p>
+
+    <!-- Display Error Message if Any -->
+    <c:if test="${not empty errorMessage}">
+        <div class="error-message">${errorMessage}</div>
+    </c:if>
 </div>
 
 </body>
