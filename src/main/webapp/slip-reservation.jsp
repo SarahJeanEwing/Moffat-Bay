@@ -33,7 +33,7 @@
 
             <!-- Boat Length (Disabled but Visible) -->
             <div class="input-group">
-                <label for="boatLength">Boat Length:</label>
+                <label for="boatLength">Boat Length (in feet):</label>
                 <input type="text" id="boatLength" name="boatLength" value="${user.boatLength}" disabled>
                 <input type="hidden" id="hiddenBoatLength" name="hiddenBoatLength" value="${user.boatLength}">
             </div>
