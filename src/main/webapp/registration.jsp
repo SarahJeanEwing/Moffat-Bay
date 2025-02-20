@@ -28,7 +28,7 @@
             <input type="text" name="lastName" placeholder="Last Name" value="<c:out value='${param.lastName}'/>" required/>
             <input type="text" name="telephone" placeholder="Telephone" value="<c:out value='${param.telephone}'/>" required/>
             <input type="text" name="boatName" placeholder="Boat Name" value="<c:out value='${param.boatName}'/>" required/>
-            <input type="number" name="boatLength" placeholder="Boat Length" value="<c:out value='${param.boatLength}'/>" required/>
+            <input type="number" name="boatLength" placeholder="Boat Length (in feet)" value="<c:out value='${param.boatLength}'/>" required/>
             <input type="password" name="password" placeholder="Password" required/>
             <button type="submit" class="btn">Register</button>
         </form>

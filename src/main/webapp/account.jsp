@@ -24,7 +24,7 @@
             <p>Email: ${user.email}</p>
             <p>Telephone: ${user.telephone}</p>
             <p>Boat Name: ${user.boatName}</p>
-            <p>Boat Length: ${user.boatLength}</p>
+            <p>Boat Length: ${user.boatLength} feet</p>
             <div class="btn-container">
                 <form action="${pageContext.request.contextPath}/logout" method="post">
                     <button type="submit" class="btn">Log Out</button>
