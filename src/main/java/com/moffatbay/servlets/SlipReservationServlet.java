@@ -38,10 +38,18 @@ public class SlipReservationServlet extends HttpServlet {
 
         LocalDate checkinDate = LocalDate.parse(checkinDateStr);
         LocalDate checkoutDate = LocalDate.parse(checkoutDateStr);
+        LocalDate today = LocalDate.now();
 
         HttpSession session = request.getSession();
         Customer user = (Customer) session.getAttribute("user");
         int customerId = user.getCustomerId();
+
+        // Check if check-in date is after today's date
+        if (!checkinDate.isAfter(today)) {
+            session.setAttribute("message", "Check-in date needs to be after today's date.");
+            response.sendRedirect("slip-reservation");
+            return;
+        }
 
         // Check if checkin_date is before checkout_date
         if (!checkinDate.isBefore(checkoutDate)) {
