@@ -1,5 +1,6 @@
 package com.moffatbay.servlets;
 
+import com.moffatbay.beans.Customer;
 import com.moffatbay.beans.Reservation;
 import com.moffatbay.utils.DatabaseUtils;
 import com.moffatbay.utils.EmailValidator;
@@ -33,15 +34,19 @@ public class ReservationLookupServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String lookUp = request.getParameter("lookUp");
-
-        // Look up by email or reservation ID
         boolean searchPerformed = true;
+
         if (EmailValidator.isValidEmail(lookUp)) {
             email = lookUp;
-            customerId = String.valueOf(Objects.requireNonNull(DatabaseUtils.getCustomerByEmail(email)).getCustomerId());
-            // Get reservations by customer ID
-            List<Reservation> reservations = getReservationsByCustomerId(customerId);
-            request.setAttribute("reservations", reservations);
+
+            // Check if the customer exists for the provided email
+            Customer customer = DatabaseUtils.getCustomerByEmail(email);
+            if (customer != null) {
+                customerId = String.valueOf(customer.getCustomerId());
+                // Get reservations by customer ID
+                List<Reservation> reservations = getReservationsByCustomerId(customerId);
+                request.setAttribute("reservations", reservations);
+            }
         } else {
             reservationId = lookUp;
             // Get reservation by reservation ID
@@ -52,9 +57,11 @@ public class ReservationLookupServlet extends HttpServlet {
         request.setAttribute("email", email);
         request.setAttribute("reservationId", reservationId);
         request.setAttribute("customerId", customerId);
-        request.setAttribute("searchPerformed", searchPerformed); // New attribute
+        request.setAttribute("searchPerformed", searchPerformed);
+
         request.getRequestDispatcher("/reservation-lookup.jsp").forward(request, response);
     }
+
 
 
     private List<Reservation> getReservationsByCustomerId(String customerId) {

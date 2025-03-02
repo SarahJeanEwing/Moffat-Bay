@@ -84,7 +84,7 @@
                     </c:forEach>
                 </table>
                 </c:when>
-                <c:otherwise>
+            <c:otherwise>
                 <p>No reservation found.</p>
                 </c:otherwise>
                 </c:choose>
