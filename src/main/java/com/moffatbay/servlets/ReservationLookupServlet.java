@@ -58,7 +58,6 @@ public class ReservationLookupServlet extends HttpServlet {
         request.setAttribute("reservationId", reservationId);
         request.setAttribute("customerId", customerId);
         request.setAttribute("searchPerformed", searchPerformed);
-
         request.getRequestDispatcher("/reservation-lookup.jsp").forward(request, response);
     }
 
