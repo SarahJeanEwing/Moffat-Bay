@@ -41,13 +41,15 @@
             <!-- Check-in Date -->
             <div class="input-group">
                 <label for="checkInDate">Check-in Date:</label>
-                <input type="date" id="checkInDate" name="checkInDate" required>
+                <input type="date" id="checkInDate" name="checkInDate"
+                       value="${sessionScope.prevCheckinDate}" required>
             </div>
 
             <!-- Check-out Date -->
             <div class="input-group">
                 <label for="checkOutDate">Check-out Date:</label>
-                <input type="date" id="checkOutDate" name="checkOutDate" required>
+                <input type="date" id="checkOutDate" name="checkOutDate"
+                       value="${sessionScope.prevCheckoutDate}" required>
             </div>
 
             <!-- Requires Power? (Yes/No) -->
@@ -55,11 +57,13 @@
                 <label>Requires Power? (Extra Charge)</label>
                 <div class="radio-group">
                     <label for="powerYes">
-                        <input type="radio" id="powerYes" name="requiresPower" value="yes"> Yes
+                        <input type="radio" id="powerYes" name="requiresPower" value="yes"
+                               <c:if test="${sessionScope.prevRequiresPower == 'yes'}">checked</c:if>> Yes
                     </label>
 
                     <label for="powerNo">
-                        <input type="radio" id="powerNo" name="requiresPower" value="no" checked> No
+                        <input type="radio" id="powerNo" name="requiresPower" value="no"
+                               <c:if test="${sessionScope.prevRequiresPower == 'no' || empty sessionScope.prevRequiresPower}">checked</c:if>> No
                     </label>
                 </div>
             </div>

@@ -82,6 +82,9 @@ public class ReservationUserConfirmsServlet extends HttpServlet {
                 session.setAttribute("boatName", user.getBoatName());
                 session.setAttribute("boatLength", boatLength);
 
+                session.removeAttribute("prevCheckinDate");
+                session.removeAttribute("prevCheckoutDate");
+                session.removeAttribute("prevRequiresPower");
                 session.removeAttribute("reservation");
                 response.sendRedirect("reservation-summary");
             } catch (SQLException | ClassNotFoundException e) {

@@ -33,6 +33,7 @@ public class SlipReservationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String checkinDateStr = request.getParameter("checkInDate");
         String checkoutDateStr = request.getParameter("checkOutDate");
+        String boatName = request.getParameter("boatName");
         int boatSize = Integer.parseInt(request.getParameter("hiddenBoatLength"));
         boolean power = "yes".equals(request.getParameter("requiresPower"));
 
@@ -43,6 +44,11 @@ public class SlipReservationServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Customer user = (Customer) session.getAttribute("user");
         int customerId = user.getCustomerId();
+
+        // Store the form data in session for redisplay
+        session.setAttribute("prevCheckinDate", checkinDateStr);
+        session.setAttribute("prevCheckoutDate", checkoutDateStr);
+        session.setAttribute("prevRequiresPower", power ? "yes" : "no");
 
         // Check if check-in date is after today's date
         if (!checkinDate.isAfter(today)) {
