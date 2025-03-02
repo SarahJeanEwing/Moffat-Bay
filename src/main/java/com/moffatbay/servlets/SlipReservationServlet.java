@@ -44,6 +44,11 @@ public class SlipReservationServlet extends HttpServlet {
         Customer user = (Customer) session.getAttribute("user");
         int customerId = user.getCustomerId();
 
+        // Store the form data in session for redisplay
+        session.setAttribute("prevCheckinDate", checkinDateStr);
+        session.setAttribute("prevCheckoutDate", checkoutDateStr);
+        session.setAttribute("prevRequiresPower", power ? "yes" : "no");
+
         // Check if check-in date is after today's date
         if (!checkinDate.isAfter(today)) {
             session.setAttribute("message", "Check-in date needs to be after today's date.");
