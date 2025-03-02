@@ -33,7 +33,6 @@ public class SlipReservationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String checkinDateStr = request.getParameter("checkInDate");
         String checkoutDateStr = request.getParameter("checkOutDate");
-        String boatName = request.getParameter("boatName");
         int boatSize = Integer.parseInt(request.getParameter("hiddenBoatLength"));
         boolean power = "yes".equals(request.getParameter("requiresPower"));
 
