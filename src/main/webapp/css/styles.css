@@ -397,12 +397,14 @@ body.reservation-page::before {
 .login-container, .registration-container, .reservation-container {
     max-width: 400px;
     width: 100%;
-    background: rgba(87, 176, 192, 0.7);
-    padding: 30px;
-    min-height: 400px;
-    border-radius: 10px;
-    text-align: center;
+    border: 2px solid #66B3B3; /* Darker seafoam green border */
+    padding: 10px; /* Increased padding */
+    border-radius: 5px;
+    background-color: rgba(102, 179, 179, 0.3);
+    /* Darker seafoam green background with more opacity */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px auto; /* Center the box and create spacing around it */
+    font-size: 16px; /* Default font size */
 }
 
 .login-container h1, .registration-container h1, .reservation-container h1 {
